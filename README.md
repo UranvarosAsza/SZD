@@ -1,0 +1,2 @@
+# SZD
+Szakdolgozatnak
