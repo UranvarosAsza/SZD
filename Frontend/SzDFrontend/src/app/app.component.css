@@ -1,0 +1,18 @@
+header{
+    background-color: darkblue;
+    
+    text-align: center;
+    margin: 20p;
+}
+
+body {
+    background-color: black;
+  }
+  
+#welcome{
+    color: lightgray;
+    text-align: center;
+    font-size: xx-large;
+
+
+}
