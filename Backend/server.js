@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: false}));
 
 app.listen(4000);
 
-//app.use(cors);
+
 app.use('/users' , usersRoute);
 app.get('/', (req, res)=>{
     console.log("get req from client");
