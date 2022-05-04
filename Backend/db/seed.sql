@@ -1,3 +1,6 @@
+--Initial seeder for the db
+
+--users
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
@@ -9,8 +12,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`username`,`password`)
 VALUES
-  ("Bo Guerra","1234"),
-  ("Stacy Sandoval","2345"),
-  ("Laura Larsen","3456"),
-  ("Deirdre Cantrell","4567"),
-  ("Silas Ware","5678");
+  ("Adam","1234"),
+  ("Eve","2345"),
+  ("Lucifer","3456"),
+  ("God","4567"),
+  ("Maze","5678");
+
+--more tables and querys will come here:
+/*
+
+INSERT INTO users (username, password) VALUES ('Adam', '1111');
+INSERT INTO users (username, password) VALUES ('Eve', '2222');
+INSERT INTO users (username, password) VALUES ('Lucifer', '3333');
+INSERT INTO users (username, password) VALUES ('God', '4444');
+INSERT INTO users (username, password) VALUES ('Wasabi', '5555');
+*/

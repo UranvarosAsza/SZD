@@ -1,8 +1,6 @@
-//basic seeder for the database in the future conatining SQL commands to fill the db
+//basic seeder for the database
 const mysql = require('mysql2');
 const fs = require('fs');
-//const Connection = require('mysql2/typings/mysql/lib/Connection');
-//const bcrypt = require('bcryptjs');
 
 require('dotenv').config();
 
@@ -10,7 +8,7 @@ const seedQuery = fs.readFileSync("db/seed.sql",{
     encoding: "utf-8"
 });
 
-
+//.env inports for connecting to db
 const connection= mysql.createConnection({
     host: process.env.HOST,
     port: process.env.PORT,
@@ -22,8 +20,6 @@ const connection= mysql.createConnection({
 
 connection.connect();
 
-
-//users table
 console.log('Seeding.... ');
 
 connection.query(seedQuery, err =>{
@@ -35,11 +31,3 @@ connection.query(seedQuery, err =>{
 
 console.log("MySQL db Seeding ended.");
 connection.end();
-/*
-
-INSERT INTO users (username, password) VALUES ('Adam', '1111');
-INSERT INTO users (username, password) VALUES ('Eve', '2222');
-INSERT INTO users (username, password) VALUES ('Lucifer', '3333');
-INSERT INTO users (username, password) VALUES ('God', '4444');
-INSERT INTO users (username, password) VALUES ('Wasabi', '5555');
-*/
