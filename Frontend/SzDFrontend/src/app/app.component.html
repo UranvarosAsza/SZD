@@ -19,6 +19,14 @@
   <button> Login </button>
   <button> Sign up</button>
 </li>
+<div *ngFor="let i of news">
+  <p>
+    {{i.title}}
+  </p>
+  <p>
+    {{i.description}}
+  </p>
+</div>
 
 </body>
 </html>

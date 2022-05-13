@@ -1,7 +1,7 @@
 /*--Initial seeder for the db*/
- CREATE SCHEMA `HouseAppDB2`;
+ /*CREATE SCHEMA `HouseAppDB2`;*/
  
- USE `HouseAppDB2`;
+ USE `houseappdb`;
  
  /* users */
 DROP TABLE IF EXISTS `users`;
@@ -103,3 +103,15 @@ CREATE TABLE `news` (
   ),
   PRIMARY KEY (`news_id`)
 ) AUTO_INCREMENT = 1;
+
+INSERT INTO
+  `news` (
+    `title`,
+    `description`,
+    `label`
+  )
+VALUES
+  ("Title1", "Desc: Bla bla bla bla ", 'Admin'),
+  ("Title2", "Desc2: Bla2 bla2 bla2 bla2", 'HMaster'),
+  ("Title3", "Desc3: Bla3 bla3 bla3 bla3", 'HMaster'),
+  ("Title4", "Desc4: Bla4 bla4 bla4 bla4", 'Residental');

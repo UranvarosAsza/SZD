@@ -19,15 +19,18 @@ const connection= mysql.createConnection({
 })
 
 connection.connect();
+console.log('Connecting to DB.... ');
 
-console.log('Seeding.... ');
 
 connection.query(seedQuery, err =>{
+    
     if(err){
 
         throw err;
+    }else{
+        console.log('Seeding ended ');
     }
 })
 
-console.log("MySQL db Seeding ended.");
+//console.log("MySQL db Seeding ended.");
 connection.end();
