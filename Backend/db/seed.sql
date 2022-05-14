@@ -1,9 +1,8 @@
 /*--Initial seeder for the db*/
- /*CREATE SCHEMA `HouseAppDB2`;*/
- 
- USE `houseappdb`;
- 
- /* users */
+/*CREATE SCHEMA `HouseAppDB2`;*/
+USE `houseappdb`;
+
+/* users */
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
@@ -12,7 +11,7 @@ CREATE TABLE `users` (
   `password` varchar(45),
   `name` varchar(45),
   `adress` ENUM(
-    'Adress1 ',
+    'Adress1',
     'Adress2',
     'Adress3',
     'Adress4',
@@ -21,7 +20,6 @@ CREATE TABLE `users` (
   ),
   `floor_number` int,
   `flat_number` int,
-  `isAdmin` tinyint,
   `isHouseMaster` tinyint,
   `houses` json,
   PRIMARY KEY (`user_id`)
@@ -32,24 +30,22 @@ INSERT INTO
     `username`,
     `password`,
     `adress`,
-    `isAdmin`,
     `isHouseMaster`
   )
 VALUES
-  ("Adam", "1234", 'Adress2', '1', '1'),
-  ("Eve", "2345", 'Adress2', '0', '0'),
-  ("Lucifer", "3456", 'Adress1', '0', '0'),
-  ("God", "4567", 'Adress3', '0', '1'),
-  ("Maze", "5678", 'Adress3', '0', '0');
+  ("Adam", "1234", 'Adress2', '1'),
+  ("Eve", "2345", 'Adress2', '1'),
+  ("Lucifer", "3456", 'Adress1', '1'),
+  ("God", "4567", 'Adress3', '0'),
+  ("Maze", "5678", 'Adress3', '0');
 
 /*--house*/
 DROP TABLE IF EXISTS `house`;
 
-/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
 CREATE TABLE `house` (
   `house_id` mediumint(8) unsigned NOT NULL auto_increment,
   `adress` ENUM(
-    'Adress1 ',
+    'Adress1',
     'Adress2',
     'Adress3',
     'Adress4',
@@ -61,6 +57,19 @@ CREATE TABLE `house` (
   PRIMARY KEY (`house_id`)
 ) AUTO_INCREMENT = 1;
 
+INSERT INTO
+  `house` (
+    `adress`,
+    `numberoffloors`,
+    `HM_id`
+  )
+VALUES
+  ("Adress1", "4", '1'),
+  ("Adress2", "10", '1'),
+  ("Adress3", "2", '2'),
+  ("Adress4", "10", '2'),
+  ("Adress5", "4", '3');
+
 /*residental meeting: */
 DROP TABLE IF EXISTS `residental_meeting`;
 
@@ -69,9 +78,43 @@ CREATE TABLE `residental_meeting` (
   `title` varchar(45),
   `description` varchar(45),
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `house_id` mediumint(8),
   `financial_table_id` mediumint(8),
   PRIMARY KEY (`resmeet_id`)
 ) AUTO_INCREMENT = 1;
+
+INSERT INTO
+  `residental_meeting` (
+    `title`,
+    `description`,
+    `financial_table_id`,
+    `house_id`
+  )
+VALUES
+  (
+    "Title1(res.met)",
+    "Desc(res.met): Bla bla bla bla ",
+    '1',
+    '1'
+  ),
+  (
+    "Title2(res.met)",
+    "Desc2(res.met): Bla2 bla2 bla2 bla2",
+    '2',
+    '2'
+  ),
+  (
+    "Title3(res.met)",
+    "Desc3(res.met): Bla3 bla3 bla3 bla3",
+    '3',
+    '3'
+  ),
+  (
+    "Title4(res.met)",
+    "Desc4(res.met): Bla4 bla4 bla4 bla4",
+    '4',
+    '5'
+  );
 
 /*--financial:*/
 DROP TABLE IF EXISTS `financial`;
@@ -87,8 +130,50 @@ CREATE TABLE `financial` (
   PRIMARY KEY (`financial_id`)
 ) AUTO_INCREMENT = 1;
 
-/*-more tables and querys will come here
- news */
+INSERT INTO
+  `financial` (
+    `title`,
+    `description`,
+    `plan`,
+    `fact`,
+    `nextplan`,
+    `house_id`
+  )
+VALUES
+  (
+    "Title1",
+    "Desc: Bla bla bla bla ",
+    '5000',
+    '4500',
+    '5500',
+    '1'
+  ),
+  (
+    "Title2",
+    "Desc2: Bla2 bla2 bla2 bla2",
+    '10000',
+    '12500',
+    '8500',
+    '2'
+  ),
+  (
+    "Title3",
+    "Desc3: Bla3 bla3 bla3 bla3",
+    '52000',
+    '43500',
+    '3500',
+    '3'
+  ),
+  (
+    "Title4",
+    "Desc4: Bla4 bla4 bla4 bla4",
+    '22000',
+    '12500',
+    '22500',
+    '5'
+  );
+
+/*-news */
 DROP TABLE IF EXISTS `news`;
 
 CREATE TABLE `news` (
@@ -97,7 +182,7 @@ CREATE TABLE `news` (
   `description` varchar(45),
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `label` ENUM(
-    'Admin ',
+    'Fixed',
     'HMaster',
     'Residental'
   ),
@@ -111,7 +196,24 @@ INSERT INTO
     `label`
   )
 VALUES
-  ("Title1", "Desc: Bla bla bla bla ", 'Admin'),
-  ("Title2", "Desc2: Bla2 bla2 bla2 bla2", 'HMaster'),
-  ("Title3", "Desc3: Bla3 bla3 bla3 bla3", 'HMaster'),
-  ("Title4", "Desc4: Bla4 bla4 bla4 bla4", 'Residental');
+  ("Title1", "Desc: Bla bla bla bla ", 'Fixed'),
+  (
+    "Title2",
+    "Desc2: Bla2 bla2 bla2 bla2",
+    'HMaster'
+  ),
+  (
+    "Title3",
+    "Desc3: Bla3 bla3 bla3 bla3",
+    'HMaster'
+  ),
+  (
+    "Title4",
+    "Desc4: Bla4 bla4 bla4 bla4",
+    'Residental'
+  ),
+  (
+    "Title4",
+    "Desc4: Bla4 bla4 bla4 bla4",
+    'Fixed'
+  );
