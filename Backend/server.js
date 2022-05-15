@@ -1,7 +1,7 @@
 const express = require('express');
 
 const usersRoute = require('./routes/users');
-const housesRoute = require('./routes/users');
+const housesRoute = require('./routes/houses');
 const newsRoute = require('./routes/news');
 const resMeetRoute = require('./routes/resindental_meeting');
 const financialRoute = require('./routes/financial')

@@ -26,12 +26,12 @@ router.post('/', (req, res) => {
 
     const { title, description, label } = req.body;
 
-
-    console.log("POST REQUEST_1");
+    console.log("POST REQUEST");
     console.log(title, description, label);
     if (title && description && label) {
         try {
-            db.promise().query(`INSERT INTO news(title, description,label)  VALUES('${title}','${description}','${label}')`);
+            db.promise().query(`INSERT INTO news(title,description,label)
+             VALUES('${title}','${description}','${label}')`);
             res.status(201).send({ msg: 'Cretated news' });
         } catch (err) {
             console.log(err);

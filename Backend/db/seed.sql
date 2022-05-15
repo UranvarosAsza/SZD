@@ -182,7 +182,7 @@ CREATE TABLE `news` (
   `description` varchar(45),
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `label` ENUM(
-    'Fixed',
+    'Pinned',
     'HMaster',
     'Residental'
   ),
@@ -196,7 +196,7 @@ INSERT INTO
     `label`
   )
 VALUES
-  ("Title1", "Desc: Bla bla bla bla ", 'Fixed'),
+  ("Title1", "Desc: Bla bla bla bla ", 'Pinned'),
   (
     "Title2",
     "Desc2: Bla2 bla2 bla2 bla2",
@@ -215,5 +215,5 @@ VALUES
   (
     "Title4",
     "Desc4: Bla4 bla4 bla4 bla4",
-    'Fixed'
+    'Pinned'
   );
