@@ -228,6 +228,7 @@ DROP TABLE IF EXISTS `poll`;
   `votes` int DEFAULT 0,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `label` ENUM('HMaster', 'Residental'),
+  `house_id` mediumint(8),
   PRIMARY KEY (`poll_id`)
 ) AUTO_INCREMENT = 1;
 
@@ -235,9 +236,10 @@ INSERT INTO
   `poll` (
     `title`,
     `description`,
-    `label`
+    `label`,
+    `house_id`
   )
 VALUES
-  ("Title1", "Desc: Bla bla bla bla ", 'HMaster'),
-("Title2", "Desc: Bla bla bla bla ", 'Residental'),
-("Title3", "Desc: Bla bla bla bla ", 'Residental');
+  ("Title1", "Desc: Bla bla bla bla ", 'HMaster', 1),
+("Title2", "Desc: Bla bla bla bla ", 'Residental',1),
+("Title3", "Desc: Bla bla bla bla ", 'Residental',2);

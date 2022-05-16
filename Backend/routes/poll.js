@@ -23,12 +23,12 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     console.log("POST REQUEST");
-    const { title, description, label } = req.body;
-    console.log("POST :", title, description,label);
-    if ( title && description && label) {
+    const { title, description, label, house_id} = req.body;
+    console.log("POST :", title, description,label, house_id);
+    if ( title && description && label && house_id) {
         try {
-            db.promise().query(`INSERT INTO poll( title, description, label)
-                VALUES ( '${title}', '${description}', '${label}')`);
+            db.promise().query(`INSERT INTO poll( title, description, label, house_id)
+                VALUES ( '${title}', '${description}', '${label}', '${house_id}')`);
             res.status(201).send({ msg: 'Cretated poll' });
 
         } catch (err) {
