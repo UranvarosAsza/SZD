@@ -7,6 +7,7 @@ const resMeetRoute = require('./routes/resindental_meeting');
 const financialRoute = require('./routes/financial')
 const pollRoute = require('./routes/poll');
 const app = express();
+//const cors = require("cors")
 
 //auth0:
 const {auth} = require('express-openid-connect');
@@ -21,10 +22,15 @@ const config = {
     clientID: 'f3DozEF6KcCinklsRHkcJKG3cPzhVZtB',
     issuerBaseURL: 'https://dev-iskwh67q.eu.auth0.com'
 };
+/*
+var corsOptions = {
+    origin: "http://localhost:4000/"
+};
+*/
 app.use(auth(config));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
+//app.use(cors(corsOptions));
 
 app.listen(4000);
 
