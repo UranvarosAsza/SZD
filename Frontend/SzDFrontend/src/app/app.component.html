@@ -14,11 +14,6 @@
 <br>
 <p id="welcome">Welcome text</p>
 
-<li>
-  <button> Home </button>
-  <button> Login </button>
-  <button> Sign up</button>
-</li>
 <div *ngFor="let i of news">
   <p>
     {{i.title}}
@@ -27,6 +22,6 @@
     {{i.description}}
   </p>
 </div>
-
+  <app-dashboard></app-dashboard>
 </body>
 </html>
