@@ -217,3 +217,27 @@ VALUES
     "Desc4: Bla4 bla4 bla4 bla4",
     'Pinned'
   );
+
+/*-poll */
+DROP TABLE IF EXISTS `poll`;
+
+ CREATE TABLE `poll` (
+  `poll_id` mediumint(8) unsigned NOT NULL auto_increment,
+  `title` varchar(45),
+  `description` varchar(45),
+  `votes` int DEFAULT 0,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `label` ENUM('HMaster', 'Residental'),
+  PRIMARY KEY (`poll_id`)
+) AUTO_INCREMENT = 1;
+
+INSERT INTO
+  `poll` (
+    `title`,
+    `description`,
+    `label`
+  )
+VALUES
+  ("Title1", "Desc: Bla bla bla bla ", 'HMaster'),
+("Title2", "Desc: Bla bla bla bla ", 'Residental'),
+("Title3", "Desc: Bla bla bla bla ", 'Residental');

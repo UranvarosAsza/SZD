@@ -5,6 +5,7 @@ const housesRoute = require('./routes/houses');
 const newsRoute = require('./routes/news');
 const resMeetRoute = require('./routes/resindental_meeting');
 const financialRoute = require('./routes/financial')
+const pollRoute = require('./routes/poll');
 const app = express();
 
 //auth0:
@@ -41,6 +42,7 @@ app.use('/houses', housesRoute);
 app.use('/news', newsRoute);
 app.use('/residental_meeting', resMeetRoute);
 app.use('/financial', financialRoute );
+app.use('/poll', pollRoute);
 
 app.get('/', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
