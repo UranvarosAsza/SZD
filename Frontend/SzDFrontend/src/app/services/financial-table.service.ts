@@ -35,6 +35,6 @@ export class FinTableService {
 
     postFinTables(finTable : FinancialTable){
         console.log(JSON.stringify(finTable));
-        return this.http.get<any>(this.url , this.httpOptions);
+        return this.http.post<any>(this.url , JSON.stringify(finTable), this.httpOptions);
     }
 }

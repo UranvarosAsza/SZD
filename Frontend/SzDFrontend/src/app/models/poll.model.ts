@@ -6,6 +6,7 @@ export class Poll {
     title: String;
     description: String;
     label: String;
+    //label` ENUM('HMaster', 'Residental'),
     house_id: Number;
     constructor(
 

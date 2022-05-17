@@ -1,12 +1,16 @@
-<p>add-news works!</p>
+<button (click)="showhide()">Show / hide Add News</button>
 
-<br>
-<p>Add News</p>
-<p>title</p>
-<input type="text" [(ngModel)]= "title">
-<p>description</p>
-<input type="text" [(ngModel)]="description">
-<p>label</p>
-<input type="text" [(ngModel)]="label">
+<div *ngIf="showAddNews == true" >
+    <p>title</p>
+    <input type="text" [(ngModel)]= "title">
+    <p>description</p>
+    <input type="text" [(ngModel)]="description">
+    <p>label</p>
+    <select class="form-control" [(ngModel)]="label">
+        <option value="Residental">Residental</option>
+        <option value="HMaster">HMaster</option>
+        <option value="Pinned">Pinned</option>
+    </select>
+    <button (click)="send()"> Send </button>
 
-<button (click)="send()">Send </button>
+</div>

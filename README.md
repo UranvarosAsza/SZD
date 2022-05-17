@@ -25,5 +25,5 @@ Felépítése:
 
     Futtatása:
     SZD/Frontend/SzDFrontend:
-      ng serve --port 4000
+      ng serve
        //futtatja az Angular alkalmazást és ujraindítja változtatásokat követően autómatikusan

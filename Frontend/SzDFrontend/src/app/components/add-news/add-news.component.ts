@@ -12,7 +12,8 @@ export class AddNewsComponent implements OnInit {
   title = "";
   description = "";
   label = "";
-
+  house_id = 1;
+  showAddNews = false;
   constructor(private newsService: NewsService) {
 
   }
@@ -24,11 +25,17 @@ export class AddNewsComponent implements OnInit {
   send() {
     const newnews = new News(this.title, this.description, this.label);
     this.newsService.postNews(newnews).subscribe(
-      (data) => {
-        console.log(data);
+      (data) => {console.log(data);
       }, error => {
         console.log('error: ', error)
       });
   }
+  showhide(){
+    if(this.showAddNews == true){
+      this.showAddNews = false;
+    }else{
+      this.showAddNews = true;
+    }
 
+  }
 }

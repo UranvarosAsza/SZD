@@ -4,21 +4,21 @@ export class FinancialTable{
     description: String;
     plan: Number;
     fact: Number;
-    nextPlan: Number;
+    nextplan: Number;
     house_id: Number;
     constructor(
         title: String,
         description: String,
         plan: Number,
         fact: Number,
-        nextPlan: Number,
+        nextplan: Number,
         house_id: Number
     ){
         this.title = title;
         this.description = description;
         this.plan = plan;
         this.fact = fact;
-        this.nextPlan = nextPlan;
+        this.nextplan = nextplan;
         this.house_id = house_id;
     }
 }

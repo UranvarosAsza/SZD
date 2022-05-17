@@ -8,7 +8,7 @@ import { Poll } from '../models/poll.model';
     providedIn: 'root'
 })
 export class PollService {
-    private url = 'http://localhost:8080/poll';
+    private url = 'http://localhost:4000/poll';
 
     httpOptions: any;
 
@@ -34,6 +34,6 @@ export class PollService {
 
     postPolls(poll : Poll){
         console.log(JSON.stringify(poll));
-        return this.http.get<any>(this.url , this.httpOptions);
+        return this.http.post<Poll>(this.url, JSON.stringify(poll), this.httpOptions);
     }
 }

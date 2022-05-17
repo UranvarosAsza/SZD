@@ -1,0 +1,16 @@
+
+<button (click)="showhide()">Show/ Hide Add ResMeet </button>
+<div *ngIf="showResMeet ==true">
+    <h2>Lakógyűlés tábla felvitele</h2>
+
+    <p>Cím</p>
+    <input type="text" [(ngModel)]= "title">
+    <p>Leírás</p>
+    <input type="text" [(ngModel)]="description">
+    <p>Pénzügyi tábla azonosító</p>
+    <input type="text" [(ngModel)]="financial_id">
+    <p>House ID</p>
+    <input type="text" [(ngModel)]="house_id">
+    <br>
+    <button (click)="send()">Küldés</button> 
+</div>

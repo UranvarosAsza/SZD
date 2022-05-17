@@ -12,6 +12,9 @@ import { AddPollComponent } from './components/add-poll/add-poll.component';
 import { PollComponent } from './components/poll/poll.component';
 import { NewsComponent } from './components/news/news.component';
 import {  FormsModule } from '@angular/forms';
+import { AddFinancialComponent } from './components/add-financial/add-financial.component';
+import { AddResMeetComponent } from './components/add-res-meet/add-res-meet.component';
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import {  FormsModule } from '@angular/forms';
     AddNewsComponent,
     AddPollComponent,
     PollComponent,
-    NewsComponent
+    NewsComponent,
+    AddFinancialComponent,
+    AddResMeetComponent
   ],
   imports: [
     BrowserModule,

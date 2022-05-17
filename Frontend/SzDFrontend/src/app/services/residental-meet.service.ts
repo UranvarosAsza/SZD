@@ -35,6 +35,6 @@ export class ResMeetService {
 
     postResMeets(resMeet : ResidentalMeet){
         console.log(JSON.stringify(resMeet));
-        return this.http.get<any>(this.url , this.httpOptions);
+        return this.http.post<any>(this.url ,JSON.stringify(resMeet), this.httpOptions);
     }
 }

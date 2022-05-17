@@ -1,1 +1,18 @@
-<p>add-poll works!</p>
+<button (click)="showhide()">Show / hide  Add-Poll</button>
+
+<div *ngIf="showAddpoll == true">
+    <p>Cím</p>
+    <input type="text" [(ngModel)]= "title">
+    <p>Leírás</p>
+    <input type="text" [(ngModel)]="description">
+    <p>label</p>
+    <!--  input type="text" [(ngModel)]="label"> -->    
+    
+    <select class="form-control" [(ngModel)]="label">
+        <option value="Residental">Residental</option>
+        <option value="HMaster">HMaster</option>
+    </select>
+    <p>House ID</p>
+    <input type="text" [(ngModel)]="house_id">
+    <button (click)="send()">Add poll </button> 
+</div>

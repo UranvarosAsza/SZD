@@ -8,7 +8,7 @@ import { NewsService } from './services/news.service';
 })
 export class AppComponent implements OnInit {
   title = 'SzDFrontend';
-  news: any;
+  
 
   constructor(
     private newsService: NewsService
@@ -17,14 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newsService.getNews().subscribe(
-
-      (data) => {
-        console.log(data);
-        this.news = data;
-      }, error => {
-        console.log('error: ', error)
-      });
+   
 
   }
 }
