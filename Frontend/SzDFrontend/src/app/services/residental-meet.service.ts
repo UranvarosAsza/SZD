@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
-import { Poll } from '../models/poll.model';
+import { ResidentalMeet } from '../models/residental-meet.model';
+
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class PollService {
-    private url = 'http://localhost:8080/poll';
+export class ResMeetService {
+    private url = 'localhost:4000/residental_meeting';
 
     httpOptions: any;
 
@@ -28,12 +29,12 @@ export class PollService {
     }
 
 
-    getPolls() {
+    getResMeets() {
         return this.http.get<any>(this.url +"/all", this.httpOptions);
     }
 
-    postPolls(poll : Poll){
-        console.log(JSON.stringify(poll));
+    postResMeets(resMeet : ResidentalMeet){
+        console.log(JSON.stringify(resMeet));
         return this.http.get<any>(this.url , this.httpOptions);
     }
 }

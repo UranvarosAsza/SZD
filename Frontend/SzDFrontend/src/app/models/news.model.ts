@@ -11,7 +11,7 @@ export class News {
         description: String,
         label: String,
         timestamp?: Date,
-        news_id?: number) {
+        news_id?: Number) {
 
         this.title = title;
         this.description = description;

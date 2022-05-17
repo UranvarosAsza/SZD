@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
-import { Poll } from '../models/poll.model';
+import { FinancialTable } from '../models/financial-table.model';
+
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class PollService {
-    private url = 'http://localhost:8080/poll';
+export class FinTableService {
+    private url = 'localhost:4000/financial';
 
     httpOptions: any;
 
@@ -28,12 +29,12 @@ export class PollService {
     }
 
 
-    getPolls() {
+    getFinTables() {
         return this.http.get<any>(this.url +"/all", this.httpOptions);
     }
 
-    postPolls(poll : Poll){
-        console.log(JSON.stringify(poll));
+    postFinTables(finTable : FinancialTable){
+        console.log(JSON.stringify(finTable));
         return this.http.get<any>(this.url , this.httpOptions);
     }
 }
