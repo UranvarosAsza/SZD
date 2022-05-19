@@ -7,9 +7,9 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `user_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `username` varchar(45),
-  `password` varchar(45),
-  `name` varchar(45),
+  `username` varchar(255),
+  `email` varchar (255),
+  `password` varchar(255),
   `adress` ENUM(
     'Adress1',
     'Adress2',

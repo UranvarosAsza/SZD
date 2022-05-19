@@ -7,12 +7,17 @@ const resMeetRoute = require('./routes/resindental_meeting');
 const financialRoute = require('./routes/financial')
 const pollRoute = require('./routes/poll');
 const app = express();
-//const cors = require("cors")
+const cors = require('cors');
 
 //auth0:
-const {auth} = require('express-openid-connect');
+/**
+ * const {auth} = require('express-openid-connect');
 //user-profile
 const { requiresAuth } = require('express-openid-connect');
+
+ * 
+ * 
+ */
 
 const config = {
     authRequired: false,
@@ -22,27 +27,17 @@ const config = {
     clientID: 'f3DozEF6KcCinklsRHkcJKG3cPzhVZtB',
     issuerBaseURL: 'https://dev-iskwh67q.eu.auth0.com'
 };
-/*
+
 var corsOptions = {
     origin: "http://localhost:4000/"
 };
-*/
-app.use(auth(config));
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.listen(4000);
 
-//endpointok:
-/*
-    users
-    houses
-    news
-    residental_meeting
-    financial
-
-*/
 app.use('/users' , usersRoute);
 app.use('/houses', housesRoute);
 app.use('/news', newsRoute);
@@ -50,14 +45,18 @@ app.use('/residental_meeting', resMeetRoute);
 app.use('/financial', financialRoute );
 app.use('/poll', pollRoute);
 
-app.get('/', (req, res) => {
+
+
+/**
+ * app.get('/', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
-
-app.get('/profile', requiresAuth(), (req, res) => {
+ * 
+ * 
+ * app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
-
+*/
 app.get('/', (req, res)=>{
     console.log("get req from client");
 
