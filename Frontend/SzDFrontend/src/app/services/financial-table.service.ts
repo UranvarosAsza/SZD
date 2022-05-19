@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService } from './auth.service';
 import { FinancialTable } from '../models/financial-table.model';
 
 

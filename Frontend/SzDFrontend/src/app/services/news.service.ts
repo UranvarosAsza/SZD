@@ -14,8 +14,7 @@ export class NewsService {
     httpOptions: any;
 
     constructor(
-        private http: HttpClient,
-        private authenticationService: AuthService
+        private http: HttpClient
     ) {
         // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         this.httpOptions = {

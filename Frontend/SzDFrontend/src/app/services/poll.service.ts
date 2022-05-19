@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '@auth0/auth0-angular';
 import { Poll } from '../models/poll.model';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
+
 
 
 @Injectable({

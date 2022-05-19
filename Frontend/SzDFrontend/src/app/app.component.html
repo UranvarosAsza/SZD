@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bigasd</title>
-</head>
-<body>
-  <header >
- <p>asd </p>
-  </header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink] = "['']" routerLinkActive = "active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink] = "['login']" routerLinkActive = "active">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink] = "['register']" routerLinkActive = "active" >Register</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
 
-<br>
-<p id="welcome">Welcome text</p>
-
-
+<router-outlet></router-outlet>
   <app-dashboard></app-dashboard>
-</body>
-</html>
+
