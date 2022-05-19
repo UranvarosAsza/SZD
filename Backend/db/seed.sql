@@ -20,7 +20,7 @@ CREATE TABLE `users` (
   ),
   `floor_number` int,
   `flat_number` int,
-  `isHouseMaster` tinyint,
+  `isHouseMaster` boolean,
   `houses` json,
   PRIMARY KEY (`user_id`)
 ) AUTO_INCREMENT = 1;

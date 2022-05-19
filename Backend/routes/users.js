@@ -28,18 +28,18 @@ router.get('/', async (req, res) => {
     res.send(results[0]).status(201);
 });
 
-/* GET users listing. */
+
 router.post('/register', async function (req, res, next) {
     try {
-      let { username, email, password } = req.body; 
+      let { username, email, password, isadmin } = req.body; 
      
       const hashed_password = md5(password.toString())
       const checkUsername = `Select username FROM users WHERE username = ?`;
       db.query(checkUsername, [username], (err, result, fields) => {
         if(!result.length){
-          const sql = `Insert Into users (username, email, password) VALUES ( ?, ?, ? )`
+          const sql = `Insert Into users (username, email, password, isHouseMaster) VALUES ( ?, ?, ?, ? )`
           db.query(
-            sql, [username, email, hashed_password],
+            sql, [username, email, hashed_password, isadmin],
           (err, result, fields) =>{
             if(err){
               res.send({ status: 0, data: err });
