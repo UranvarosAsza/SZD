@@ -1,22 +1,33 @@
-
 <button (click)="showhide()">Show/ Hide Add-Financial </button>
 <div *ngIf="showFinancial ==true">
     <h2>Pénzügyi tábla felvitele</h2>
 
-    <p>Cím</p>
-    <input type="text" [(ngModel)]= "title">
-    <p>Leírás</p>
-    <input type="text" [(ngModel)]="description">
-    <p>label</p>
-    <!--  input type="text" [(ngModel)]="label"> -->    
-    <p>Terv</p>
-    <input type="text" [(ngModel)]="plan">
-    <p>Tény</p>
-    <input type="text" [(ngModel)]="fact">
-    <p>Következő terv</p>
-    <input type="text" [(ngModel)]="nextPlan">
-    <p>House ID</p>
-    <input type="text" [(ngModel)]="house_id">
+    <mat-form-field appearance="outline">
+        <mat-label>Cím</mat-label>
+        <input matInput [(ngModel)]="title">
+    </mat-form-field>
     <br>
-    <button (click)="send()">Küldés</button> 
+    <mat-form-field appearance="outline">
+        <mat-label>Leírás</mat-label>
+        <textarea matInput [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Terv</mat-label>
+        <input matInput [(ngModel)]="plan">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Tény</mat-label>
+        <input matInput [(ngModel)]="fact">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Következő terv</mat-label>
+        <input matInput [(ngModel)]="nextPlan">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Ház azonosító</mat-label>
+        <input matInput [(ngModel)]="house_id">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="send()">Elküldés</button>
 </div>

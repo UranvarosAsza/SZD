@@ -1,15 +1,15 @@
 
 export class ResidentalMeet{
-    title: String;
-    description: String;
-    financial_table_id: Number;
-    house_id : Number;
+    title: string;
+    description: string;
+    financial_table_id: number;
+    house_id : number;
 
     constructor(
-        title: String,
-        description: String,
-        financial_table_id: Number,
-        house_id: Number,
+        title: string,
+        description: string,
+        financial_table_id: number,
+        house_id: number,
     ){
         this.title = title;
         this.description = description;

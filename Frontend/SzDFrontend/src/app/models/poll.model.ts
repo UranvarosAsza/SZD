@@ -7,14 +7,14 @@ export class Poll {
     description: String;
     label: String;
     votes: number;
-    house_id: number;
+    house_id: Number;
     constructor(
 
         title: String,
         description: String,
         label: String,
         votes: number,
-        house_id: number
+        house_id: Number
         ) {
 
         this.title = title;

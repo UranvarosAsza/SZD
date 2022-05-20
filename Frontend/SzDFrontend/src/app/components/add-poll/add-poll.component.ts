@@ -24,7 +24,7 @@ export class AddPollComponent implements OnInit {
   }
 
   send() {
-    const newPoll = new Poll(this.title, this.description, this.label, this.house_id, this.vote );
+    const newPoll = new Poll(this.title, this.description, this.label, this.vote, this.house_id  );
     this.pollService.postPolls(newPoll).subscribe(
       (data) => {console.log(data);
       }, error => {

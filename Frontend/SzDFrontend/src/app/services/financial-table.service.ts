@@ -9,7 +9,7 @@ import { FinancialTable } from '../models/financial-table.model';
     providedIn: 'root'
 })
 export class FinTableService {
-    private url = 'localhost:4000/financial';
+    private url = 'http://localhost:4000/financial';
 
     httpOptions: any;
 

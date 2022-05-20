@@ -1,6 +1,7 @@
 <button (click)="showhide()">Show / hide Add News</button>
 
 <div *ngIf="showAddNews == true" >
+  <h2>Hír hozzáadása</h2>
     <mat-form-field appearance="outline">
         <mat-label>Cím</mat-label>
         <input matInput [(ngModel)]= "title">

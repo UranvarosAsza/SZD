@@ -1,16 +1,26 @@
-
 <button (click)="showhide()">Show/ Hide Add ResMeet </button>
 <div *ngIf="showResMeet ==true">
     <h2>Lakógyűlés tábla felvitele</h2>
 
-    <p>Cím</p>
-    <input type="text" [(ngModel)]= "title">
-    <p>Leírás</p>
-    <input type="text" [(ngModel)]="description">
-    <p>Pénzügyi tábla azonosító</p>
-    <input type="text" [(ngModel)]="financial_id">
-    <p>House ID</p>
-    <input type="text" [(ngModel)]="house_id">
+    <mat-form-field appearance="outline">
+        <mat-label>Cím</mat-label>
+        <input matInput [(ngModel)]="title">
+    </mat-form-field>
     <br>
-    <button (click)="send()">Küldés</button> 
+    <mat-form-field appearance="outline">
+        <mat-label>Leírás</mat-label>
+        <textarea matInput [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Pénzügyi táblá / táblák</mat-label>
+        <input matInput [(ngModel)]="financial_id">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Ház azonosító</mat-label>
+        <input matInput [(ngModel)]="house_id">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="send()">Elküldés</button>
 </div>

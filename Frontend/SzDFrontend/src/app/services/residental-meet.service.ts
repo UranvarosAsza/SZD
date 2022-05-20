@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
     providedIn: 'root'
 })
 export class ResMeetService {
-    private url = 'localhost:4000/residental_meeting';
+    private url = 'http://localhost:4000/residental_meeting';
 
     httpOptions: any;
 
@@ -35,6 +35,6 @@ export class ResMeetService {
 
     postResMeets(resMeet : ResidentalMeet){
         console.log(JSON.stringify(resMeet));
-        return this.http.post<any>(this.url ,JSON.stringify(resMeet), this.httpOptions);
+        return this.http.post<ResidentalMeet>(this.url, JSON.stringify(resMeet), this.httpOptions);
     }
 }
