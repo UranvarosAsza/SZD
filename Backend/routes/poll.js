@@ -23,9 +23,9 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     console.log("POST REQUEST");
-    const { title, description, label, house_id} = req.body;
-    console.log("POST :", title, description,label, house_id);
-    if ( title && description && label && house_id) {
+    const { title, description, label, house_id } = req.body;
+    console.log("POST :", title, description, label, house_id);
+    if (title && description && label && house_id) {
         try {
             db.promise().query(`INSERT INTO poll( title, description, label, house_id)
                 VALUES ( '${title}', '${description}', '${label}', '${house_id}')`);
@@ -36,6 +36,19 @@ router.post('/', async (req, res) => {
         }
     }
 });
+router.put('/', async (req, res) => {
+    console.log("poll counter incresed");
+    const { poll_id } = req.body;
+    try {
+        db.promise().query(`
+        UPDATE poll SET votes = votes + 1
+         WHERE poll_id = '${poll_id}'
+        `);
+        res.status(201).send({ msg: "poll updated" });
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 router.delete('/', async (req, res) => {
 
@@ -43,7 +56,7 @@ router.delete('/', async (req, res) => {
     var poll_id = req.body.financial_id;
     const delted_poll = await db.promise().query(`SELECT title FROM poll WHERE poll_id = '${poll_id}' `);
     var results = await db.promise().query(`DELETE FROM poll WHERE poll_id = '${poll_id}' `);
-  
+
     var deletedP = delted_poll[0][0].title + ' deleted';
     res.send({ msg: deletedP });
 });
