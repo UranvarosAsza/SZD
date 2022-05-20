@@ -14,7 +14,7 @@ import { AddFinancialComponent } from './components/add-financial/add-financial.
 import { AddResMeetComponent } from './components/add-res-meet/add-res-meet.component';
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router'; 
-
+import {MatCardModule} from '@angular/material/card'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +33,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     AuthModule,
-    RouterModule
+    RouterModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
