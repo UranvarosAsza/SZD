@@ -31,7 +31,11 @@ router.post('/', async (req, res) => {
         }
     }
 });
-
+router.get('/adresses', async (req, res) => {
+    console.log('all adresses request');
+    const adresses = await db.promise().query(`SELECT distinct adress from house`);
+    res.send(adresses[0]);
+});
 
 router.get('/', async (req, res) => {
     console.log("GET REQUEST");
