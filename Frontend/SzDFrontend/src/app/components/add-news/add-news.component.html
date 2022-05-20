@@ -1,16 +1,22 @@
 <button (click)="showhide()">Show / hide Add News</button>
 
 <div *ngIf="showAddNews == true" >
-    <p>title</p>
-    <input type="text" [(ngModel)]= "title">
-    <p>description</p>
-    <input type="text" [(ngModel)]="description">
-    <p>label</p>
-    <select class="form-control" [(ngModel)]="label">
-        <option value="Residental">Residental</option>
-        <option value="HMaster">HMaster</option>
-        <option value="Pinned">Pinned</option>
-    </select>
-    <button (click)="send()"> Send </button>
+    <mat-form-field appearance="outline">
+        <mat-label>Cím</mat-label>
+        <input matInput [(ngModel)]= "title">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label >Leírás</mat-label>
+        <textarea matInput [(ngModel)]="description"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
 
+        <mat-label >Cimke</mat-label>
+        <mat-select [(ngModel)]="label">
+          <mat-option value="Residental">Lakó</mat-option>
+          <mat-option value="HMaster">Házmester</mat-option>
+          <mat-option value="Pinned">Rögzített</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="send()">Elküldés</button>
 </div>

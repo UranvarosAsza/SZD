@@ -12,6 +12,7 @@ export class AddPollComponent implements OnInit {
   title = "";
   description = "";
   label = "";
+  vote =0;
   house_id = 1;
   showAddpoll = false;
   constructor(private pollService: PollService) {
@@ -23,7 +24,7 @@ export class AddPollComponent implements OnInit {
   }
 
   send() {
-    const newPoll = new Poll(this.title, this.description, this.label, this.house_id);
+    const newPoll = new Poll(this.title, this.description, this.label, this.house_id, this.vote );
     this.pollService.postPolls(newPoll).subscribe(
       (data) => {console.log(data);
       }, error => {

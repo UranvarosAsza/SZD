@@ -38,4 +38,10 @@ export class PollService {
         console.log(JSON.stringify(poll));
         return this.http.post<Poll>(this.url, JSON.stringify(poll), this.httpOptions);
     }
+
+    putPolls( poll : Poll){
+        console.log(JSON.stringify(poll));
+            return this.http.put<Poll>(this.url, JSON.stringify(poll), this.httpOptions);
+   
+    }
 }

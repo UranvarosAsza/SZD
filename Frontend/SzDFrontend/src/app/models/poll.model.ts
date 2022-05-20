@@ -6,18 +6,21 @@ export class Poll {
     title: String;
     description: String;
     label: String;
-    //label` ENUM('HMaster', 'Residental'),
-    house_id: Number;
+    votes: number;
+    house_id: number;
     constructor(
 
         title: String,
         description: String,
         label: String,
-        house_id: Number) {
+        votes: number,
+        house_id: number
+        ) {
 
         this.title = title;
         this.description = description;
         this.label = label;
+        this.votes = votes;
         this.house_id = house_id;
 
     }

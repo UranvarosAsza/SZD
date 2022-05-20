@@ -15,6 +15,11 @@ import { AddResMeetComponent } from './components/add-res-meet/add-res-meet.comp
 import { AuthModule } from './auth/auth.module';
 import { RouterModule } from '@angular/router'; 
 import {MatCardModule} from '@angular/material/card'; 
+import {MatFormFieldModule} from '@angular/material/form-field'; 
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from  '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +39,15 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     AuthModule,
     RouterModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    //{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
