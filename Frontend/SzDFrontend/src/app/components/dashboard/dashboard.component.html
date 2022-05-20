@@ -12,9 +12,9 @@
 
 <app-add-financial></app-add-financial>
 <br>
-<!--
 
-<app-news></app-news>
-<app-poll></app-poll>
-
--->
+<div *ngIf="showNewsandPolls == true" >
+    <app-news></app-news>
+    <app-poll></app-poll>
+</div>
+<button mat-raised-button color="primary" (click)="showhide()">Hírek és szavazások</button>

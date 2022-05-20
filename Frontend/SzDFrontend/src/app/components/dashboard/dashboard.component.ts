@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
+
+  showNewsandPolls = false;
+
   constructor(public auth: AuthService) {}
   
 
@@ -17,4 +20,11 @@ export class DashboardComponent implements OnInit {
     //console.log(this.auth.user$.subscribe(data=>{console.log(data)}));
   }
 
+  showhide(){
+    if(this.showNewsandPolls == true){
+      this.showNewsandPolls = false;
+    }else{
+      this.showNewsandPolls = true;
+    }
+  }
 }
