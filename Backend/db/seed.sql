@@ -10,16 +10,7 @@ CREATE TABLE `users` (
   `username` varchar(255),
   `email` varchar (255),
   `password` varchar(255),
-  `adress` ENUM(
-    'Adress1',
-    'Adress2',
-    'Adress3',
-    'Adress4',
-    'Adress5',
-    'Adress6'
-  ),
-  `floor_number` int,
-  `flat_number` int,
+  `adress` varchar (255),
   `isHouseMaster` boolean,
   `houses` json,
   PRIMARY KEY (`user_id`)
@@ -44,31 +35,19 @@ DROP TABLE IF EXISTS `house`;
 
 CREATE TABLE `house` (
   `house_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `adress` ENUM(
-    'Adress1',
-    'Adress2',
-    'Adress3',
-    'Adress4',
-    'Adress5',
-    'Adress6'
-  ),
-  `numberoffloors` varchar(45),
+  `adress` varchar (255),
   `HM_id` mediumint(8),
   PRIMARY KEY (`house_id`)
 ) AUTO_INCREMENT = 1;
 
 INSERT INTO
-  `house` (
-    `adress`,
-    `numberoffloors`,
-    `HM_id`
-  )
+  `house` (`adress`, `HM_id`)
 VALUES
-  ("Adress1", "4", '1'),
-  ("Adress2", "10", '1'),
-  ("Adress3", "2", '2'),
-  ("Adress4", "10", '2'),
-  ("Adress5", "4", '3');
+  ("Adress1", '1'),
+  ("Adress2", '1'),
+  ("Adress3", '2'),
+  ("Adress4", '2'),
+  ("Adress5", '3');
 
 /*residental meeting: */
 DROP TABLE IF EXISTS `residental_meeting`;
@@ -221,7 +200,7 @@ VALUES
 /*-poll */
 DROP TABLE IF EXISTS `poll`;
 
- CREATE TABLE `poll` (
+CREATE TABLE `poll` (
   `poll_id` mediumint(8) unsigned NOT NULL auto_increment,
   `title` varchar(45),
   `description` varchar(45),
@@ -241,5 +220,15 @@ INSERT INTO
   )
 VALUES
   ("Title1", "Desc: Bla bla bla bla ", 'HMaster', 1),
-("Title2", "Desc: Bla bla bla bla ", 'Residental',1),
-("Title3", "Desc: Bla bla bla bla ", 'Residental',2);
+  (
+    "Title2",
+    "Desc: Bla bla bla bla ",
+    'Residental',
+    1
+  ),
+  (
+    "Title3",
+    "Desc: Bla bla bla bla ",
+    'Residental',
+    2
+  );
