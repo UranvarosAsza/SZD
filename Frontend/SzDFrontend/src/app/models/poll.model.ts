@@ -1,6 +1,3 @@
-
-
-
 export class Poll {
 
     title: String;
@@ -8,6 +5,7 @@ export class Poll {
     label: String;
     votes: number;
     house_id: Number;
+    
     constructor(
 
         title: String,
