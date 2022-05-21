@@ -19,7 +19,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from  '@angular/material/input';
-import {MatCommonModule} from '@angular/material/core'; 
+import {MatCommonModule} from '@angular/material/core';
+import { ResmeetComponent } from './resmeet/resmeet.component';
+import { FinancialComponent } from './financial/financial.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,8 @@ import {MatCommonModule} from '@angular/material/core';
     NewsComponent,
     AddFinancialComponent,
     AddResMeetComponent,
+    ResmeetComponent,
+    FinancialComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,7 @@ import {MatCommonModule} from '@angular/material/core';
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    MatCommonModule
+    MatCommonModule,
   ],
   providers: [
     //{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

@@ -28,8 +28,10 @@
     </div>
 
 </div>
-<div>
+<button mat-stroked-button color="primary" (click)="showhideRegboard()">WIP regboard</button>
+<div *ngIf ="showRegboard == true">
     <h3>Felhasználó regisztrálása</h3>
+
     <mat-form-field appearance="outline">
         <mat-label>Név</mat-label>
         <input matInput>
@@ -44,4 +46,27 @@
         <mat-label>Jelszó</mat-label>
         <input matInput>
     </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Lakcím</mat-label>
+        <mat-select required>
+            <mat-option *ngFor="let adress of houses" [value]="adress">
+                {{adress.adress}}
+            </mat-option>
+        </mat-select>
+        <mat-error>Kérem válasszon lakcímet</mat-error>
+        <mat-hint>Válasszon az elérhető lakcímek közül</mat-hint>
+    </mat-form-field>
+    <br>
+
+    <section class="checkbox">
+        <p>
+            <mat-checkbox>Közös képviselő</mat-checkbox>
+        </p>
+    </section>
+    <div>
+        
+    </div>
+    <br>
+    <button mat-raised-button color="primary" >Regisztráció</button>
 </div>

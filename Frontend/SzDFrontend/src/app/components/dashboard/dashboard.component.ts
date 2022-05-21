@@ -40,7 +40,8 @@ export class DashboardComponent implements OnInit {
   }
 
   makeUser() {
-    if(localStorage.getItem('userData')){
+
+    if(localStorage.getItem('userData') || localStorage.getItem('userData')!= undefined ){
 
       console.log("userdata: " + localStorage.getItem('userData'));
     
