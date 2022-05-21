@@ -19,7 +19,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from  '@angular/material/input';
-
+import {MatCommonModule} from '@angular/material/core'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import {MatInputModule} from  '@angular/material/input';
     MatFormFieldModule,
     MatButtonModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatCommonModule
   ],
   providers: [
     //{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

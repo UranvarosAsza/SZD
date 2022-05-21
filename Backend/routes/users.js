@@ -7,81 +7,94 @@ const jwt = require('jsonwebtoken');
 
 const { check, validationResults } = require('express-validator');
 
+async function selectLoggedInUser(param) {
+
+    const loggedInUser = await db.promise().query(`SELECT user_id, username, isHouseMaster, adress FROM users WHERE username = '${param}'`);
+
+  console.log(loggedInUser[0][0]);
+  return loggedInUser[0][0];
+};
+
 router.use((req, res, next) => {
-    console.log("Request made to users route");
-    next();
+  console.log("Request made to users route");
+  next();
 });
 
 router.get('/all', async (req, res) => {
-    console.log("users.all request got, and replyed with all the users");
+  console.log("users.all request got, and replyed with all the users");
 
-    const results = await db.promise().query(`SELECT * FROM USERS`);
-    res.send(results[0]);
-    //res.send("users/all endpoint works");
+  const results = await db.promise().query(`SELECT * FROM USERS`);
+  res.send(results[0]);
+  //res.send("users/all endpoint works");
 });
 
 router.get('/', async (req, res) => {
-    console.log("GET REQUEST to user id: ");
-    const user_id = req.body.user_id;
-    console.log(user_id);
-    const results = await db.promise().query(`SELECT * FROM USERS WHERE user_id = '${user_id}' `);
-    res.send(results[0]).status(201);
+  console.log("GET REQUEST to user id: ");
+  const user_id = req.body.user_id;
+  console.log(user_id);
+  const results = await db.promise().query(`SELECT * FROM USERS WHERE user_id = '${user_id}' `);
+  res.send(results[0]).status(201);
 });
 
 
 router.post('/register', async function (req, res, next) {
-    try {
-      let { username, email, password, isadmin } = req.body; 
-     
-      const hashed_password = md5(password.toString())
-      const checkUsername = `Select username FROM users WHERE username = ?`;
-      db.query(checkUsername, [username], (err, result, fields) => {
-        if(!result.length){
-          const sql = `Insert Into users (username, email, password, isHouseMaster) VALUES ( ?, ?, ?, ? )`
-          db.query(
-            sql, [username, email, hashed_password, isadmin],
-          (err, result, fields) =>{
-            if(err){
+  try {
+    let { username, email, password, isadmin } = req.body;
+
+    const hashed_password = md5(password.toString())
+    const checkUsername = `Select username FROM users WHERE username = ?`;
+    db.query(checkUsername, [username], (err, result, fields) => {
+      if (!result.length) {
+        const sql = `Insert Into users (username, email, password, isHouseMaster) VALUES ( ?, ?, ?, ? )`
+        db.query(
+          sql, [username, email, hashed_password, isadmin],
+          (err, result, fields) => {
+            if (err) {
               res.send({ status: 0, data: err });
-            }else{
+            } else {
               let token = jwt.sign({ data: result }, 'secret')
-              res.send({ status: 1, data: result, token : token });
+              res.send({ status: 1, data: result, token: token });
               console.log('user registration complete');
             }
-           
+
           })
-        }
-      });
-      
-     
-    } catch (error) {
-      res.send({ status: 0, error: error });
-    }
+      }
+    });
+
+
+  } catch (error) {
+    res.send({ status: 0, error: error });
+  }
 });
 
 router.post('/login', async function (req, res, next) {
-    try {
-      let { username, password } = req.body; 
-     
-      const hashed_password = md5(password.toString())
-      const sql = `SELECT * FROM users WHERE username = ? AND password = ?`
-      db.query(
-        sql, [username, hashed_password],
-      function(err, result, fields){
-        if(err){
+  try {
+    let { username, password } = req.body;
+    let userData;
+    const hashed_password = md5(password.toString())
+    const sql = `SELECT * FROM users WHERE username = ? AND password = ?`
+    db.query(
+      sql, [username, hashed_password],
+      function (err, result, fields) {
+        if (err) {
           res.send({ status: 0, data: err });
-        }else{
+        } else {
           let token = jwt.sign({ data: result }, 'secret')
-          res.send({ status: 1, data: result, token: token });
+          //res.send(selectLoggedInUser(username))
+          res.send({ status: 1, data: result, token: token  });
           console.log('user login complete');
+                  
         }
-       
+
       })
-    } catch (error) {
-      res.send({ status: 0, error: error });
-    }
+  } catch (error) {
+    res.send({ status: 0, error: error });
+  }
 });
-  
+
+
+
+
 /*
 router.post('/register', [
     check('username').notEmpty().withMessage("username id canot be empty")
@@ -106,14 +119,14 @@ router.post('/register', [
 
 router.delete('/', async (req, res) => {
 
-    var user_id = req.body.user_id;
+  var user_id = req.body.user_id;
 
 
-    const deleted_username = await db.promise().query(`SELECT username FROM USERS WHERE user_id = '${user_id}' `);
-    var results = await db.promise().query(`DELETE FROM USERS WHERE user_id = '${user_id}' `);
+  const deleted_username = await db.promise().query(`SELECT username FROM USERS WHERE user_id = '${user_id}' `);
+  var results = await db.promise().query(`DELETE FROM USERS WHERE user_id = '${user_id}' `);
 
-    var deletedUN = deleted_username[0][0].username + ' deleted';
-    res.send({ msg: deletedUN });
+  var deletedUN = deleted_username[0][0].username + ' deleted';
+  res.send({ msg: deletedUN });
 });
 
 

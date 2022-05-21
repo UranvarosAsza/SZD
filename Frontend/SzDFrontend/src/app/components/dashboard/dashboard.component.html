@@ -1,8 +1,3 @@
-<p>dashboard works!</p>
-
-
-
-
 
 <app-add-news></app-add-news>
 
@@ -13,8 +8,16 @@
 <app-add-financial></app-add-financial>
 <br>
 
+<button (click)="makeUser()"> Make user</button>
+<button mat-raised-button color="primary" (click)="showhideNewsandPolls()">Hírek és szavazások</button>
+<button mat-raised-button color="primary" (click)="showhideResMeetandFin()">Lakógyúések és pénzügyek</button>
 <div *ngIf="showNewsandPolls == true" >
     <app-news></app-news>
     <app-poll></app-poll>
 </div>
-<button mat-raised-button color="primary" (click)="showhide()">Hírek és szavazások</button>
+
+
+<div *ngIf="showResMeetandFinancial == true" >
+    <app-news></app-news>
+    <app-poll></app-poll>
+</div>

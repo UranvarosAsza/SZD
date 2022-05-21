@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import { ApiService } from './../../../services/api.service'
-import { AuthService } from './../../../services/auth.service'
+import { ApiService } from '../../services/api.service'
+import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _api: ApiService, 
     private _auth: AuthService, 
-    private _router:Router
+    private _router:Router,
+   // public loggedInUser : User
   ) { }
 
   ngOnInit() {
@@ -32,8 +34,11 @@ export class LoginComponent implements OnInit {
      
       if (res.status) { 
        
-        this._auth.setDataInLocalStorage('userData', JSON.stringify(res.data));  
+        this._auth.setDataInLocalStorage('userData',JSON.stringify(res.data) );  
         this._auth.setDataInLocalStorage('token', res.token);  
+        this._auth.setDataInLocalStorage('userdata' ,JSON.stringify(res.userData));
+        console.log(typeof(res.data));
+        console.log(localStorage.getItem('userData'));
         this._router.navigate(['']);
       }
     })
