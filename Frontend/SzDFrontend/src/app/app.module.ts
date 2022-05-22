@@ -21,7 +21,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from  '@angular/material/input';
 import {MatCommonModule} from '@angular/material/core';
 import { ResmeetComponent } from './resmeet/resmeet.component';
-import { FinancialComponent } from './financial/financial.component'; 
+import { FinancialComponent } from './financial/financial.component';
+import {MatTableModule} from '@angular/material/table'; 
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FinancialComponent } from './financial/financial.component';
     MatSelectModule,
     MatInputModule,
     MatCommonModule,
+    MatTableModule
   ],
   providers: [
     //{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

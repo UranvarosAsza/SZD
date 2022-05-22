@@ -26,6 +26,12 @@ export class HouseService {
             })
         };
     }
+
+    getHouseId(adress : String){
+
+        return this.http.post<any>(this.url + '/id', JSON.stringify(adress), this.httpOptions)
+    }
+
     getAdresses(){
       
         return this.http.get<any>(this.url +"/adresses", this.httpOptions);

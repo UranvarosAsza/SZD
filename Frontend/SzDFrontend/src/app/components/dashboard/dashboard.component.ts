@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { HouseService } from 'src/app/services/house.service';
 
 
 @Component({
@@ -12,15 +13,22 @@ export class DashboardComponent implements OnInit {
 
   showResMeetandFinancial = false;
   showNewsandPolls = false;
-  loggedinuser : any;
+  loggedinuser: any;
+  houseid = 0;
+  adress = "Adress1";
+  houses: any;
 
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    public houseService: HouseService
+  ) { }
 
 
   ngOnInit(): void {
 
     //console.log(this.auth.user$.subscribe(data=>{console.log(data)}));
     this.makeUser();
+   // this.getHouseId(this.adress);
   }
 
   showhideNewsandPolls() {
@@ -41,19 +49,50 @@ export class DashboardComponent implements OnInit {
 
   makeUser() {
 
-    if(localStorage.getItem('userData') || localStorage.getItem('userData')!= undefined ){
+    if (localStorage.getItem('userData') != undefined) {
 
       console.log("userdata: " + localStorage.getItem('userData'));
-    
+
       const userbase = JSON.parse(localStorage.getItem("userData")!);
-     
-      this.loggedinuser = new User(userbase[0].user_id, userbase[0].username, userbase[0].isHouseMaster, userbase[0].adress, 1);
-    
+  
+      //this.houseid=this.getHouseId(userbase[0].adress);
+      this.loggedinuser = new User(userbase[0].user_id, userbase[0].username, userbase[0].isHouseMaster, userbase[0].adress, this.houseid);
+
       console.log(this.loggedinuser);
-    }else{
+    } else {
 
       console.log("User not logged in")
     }
-    
+
   }
+  /*
+  getHouseId(adress: String) {
+
+    this.houseService.getHouses().subscribe(
+
+      (data) => {
+        console.log("houses" + JSON.stringify(data));
+        this.houses = data;
+
+        for (let i = 0; i < this.houses.length; i++) {
+          if(this.adress[i].adress == adress ){
+            return this.adress[i].house_id;
+          }
+          console.log("asdasd " + this.houses[i].house_id);
+        }
+
+      }, error => {
+        console.log('error: ', error)
+      });
+     
+    
+  }*/
 }
+
+/*
+houses[{
+  "house_id": 1, "adress": "Adress1", "HM_id": 1 }, 
+{ "house_id": 2, "adress": "Adress2", "HM_id": 1 },
+{ "house_id": 3, "adress": "Adress3", "HM_id": 2 },
+{ "house_id": 4, "adress": "Adress4", "HM_id": 2 },
+{ "house_id": 5, "adress": "Adress5", "HM_id": 3 }]*/
