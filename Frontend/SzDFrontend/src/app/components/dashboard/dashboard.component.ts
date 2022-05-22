@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
 
       const userbase = JSON.parse(localStorage.getItem("userData")!);
   
-      //this.houseid=this.getHouseId(userbase[0].adress);
+      this.houseid=this.getHouseId(userbase[0].adress);
       this.loggedinuser = new User(userbase[0].user_id, userbase[0].username, userbase[0].isHouseMaster, userbase[0].adress, this.houseid);
 
       console.log(this.loggedinuser);
@@ -65,7 +65,7 @@ export class DashboardComponent implements OnInit {
     }
 
   }
-  /*
+  
   getHouseId(adress: String) {
 
     this.houseService.getHouses().subscribe(
@@ -75,18 +75,19 @@ export class DashboardComponent implements OnInit {
         this.houses = data;
 
         for (let i = 0; i < this.houses.length; i++) {
-          if(this.adress[i].adress == adress ){
-            return this.adress[i].house_id;
+          if(this.houses[i].adress == adress ){
+
+            return this.houses[i].house_id;
           }
           console.log("asdasd " + this.houses[i].house_id);
         }
 
       }, error => {
-        console.log('error: ', error)
+        console.log('error: ', error);
+       
       });
-     
-    
-  }*/
+      return 0;
+  }
 }
 
 /*
