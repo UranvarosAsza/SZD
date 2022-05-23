@@ -1,22 +1,20 @@
-<button (click)="showhide()">Show / hide  Add-Poll</button>
+<div>
+  <h2>Szavazás hozzáadása</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Cím</mat-label>
+    <input matInput [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Leírás</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
 
-<div *ngIf="showAddpoll == true" >
-    <h2>Szavazás hozzáadása</h2>
-    <mat-form-field appearance="outline">
-        <mat-label>Cím</mat-label>
-        <input matInput [(ngModel)]= "title">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label >Leírás</mat-label>
-        <textarea matInput [(ngModel)]="description"></textarea>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-
-        <mat-label >Cimke</mat-label>
-        <mat-select [(ngModel)]="label">
-          <mat-option value="Residental">Lakó</mat-option>
-          <mat-option value="HMaster">Házmester</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="send()">Elküldés</button>
+    <mat-label>Cimke</mat-label>
+    <mat-select [(ngModel)]="label">
+      <mat-option value="Residental">Lakó</mat-option>
+      <mat-option value="HMaster">Házmester</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="send()">Elküldés</button>
 </div>

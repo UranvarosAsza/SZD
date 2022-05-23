@@ -1,10 +1,11 @@
 .news-card {
     max-width: 400px;
+    max-height: 200px;
+    width: 40vw;
+    height: 40vh;
+    margin: 8px;
 }
 
-/*
-.example-header-image {
-    background-image: url('../../../images/house_1.jpg');
-    background-size: cover;
+.news-grid {
+    display: inline-flex;
 }
-*/

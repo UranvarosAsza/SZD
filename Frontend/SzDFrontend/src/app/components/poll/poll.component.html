@@ -1,4 +1,5 @@
-<div *ngFor="let i of polls">
+<h1>Polls</h1>
+<div *ngFor="let i of polls" class="poll-grid">
   <mat-card class="poll-card" >
     <mat-card-header>
       <div mat-card-avatar ></div>
@@ -8,8 +9,6 @@
       <p>
         {{i.description}}
       </p>
-    </mat-card-content>
-    <mat-card-content>
       <p>
         {{i.votes}}
       </p>

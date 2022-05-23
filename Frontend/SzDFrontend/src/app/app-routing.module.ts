@@ -1,14 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { RegisterComponent } from './auth/components/register/register.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    //canActivate: [AuthGuard]
+  },
+  { path: '**', component: PagenotfoundComponent },
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

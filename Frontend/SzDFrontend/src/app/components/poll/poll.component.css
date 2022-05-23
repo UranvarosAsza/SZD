@@ -1,3 +1,12 @@
 .poll-card {
     max-width: 400px;
+    max-height: 200px;
+    width: 40vw;
+    height: 40vh;
+    margin: 8px;
+}
+
+
+.poll-grid {
+    display: inline-flex;
 }

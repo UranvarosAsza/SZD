@@ -12,7 +12,6 @@ CREATE TABLE `users` (
   `password` varchar(255),
   `adress` varchar (255),
   `isHouseMaster` boolean,
-  `houses` json,
   PRIMARY KEY (`user_id`)
 ) AUTO_INCREMENT = 1;
 
@@ -165,6 +164,7 @@ CREATE TABLE `news` (
     'HMaster',
     'Residental'
   ),
+  `house_id` mediumint(8),
   PRIMARY KEY (`news_id`)
 ) AUTO_INCREMENT = 1;
 

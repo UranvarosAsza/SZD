@@ -1,12 +1,13 @@
-
-<div *ngFor="let i of news">
-  <mat-card class="news-card" >
+<h1>News</h1>
+<div *ngFor="let i of news" class="news-grid">
+  <mat-card class="news-card">
     <mat-card-header>
-      <mat-card-title>{{i.title}} <Title></Title></mat-card-title>
+      <mat-card-title>{{i.title}}</mat-card-title>
+      <mat-card-subtitle>{{i.label}} / {{i.timestamp | date:'medium'}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
-        {{i.label}}
+        {{i.description}}
       </p>
     </mat-card-content>
   </mat-card>
