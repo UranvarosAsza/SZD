@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -10,7 +10,7 @@ import { HouseService } from 'src/app/services/house.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnChanges {
   showResMeetandFinancial = false;
   showNewsandPolls = false;
   loggedinuser: any;
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   houses: any;
 
   constructor(
-    public auth: AuthService, 
+    public auth: AuthService,
     public houseService: HouseService,
     private _router: Router
   ) {}
@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit {
     // this.getHouseId(this.adress);
   }
 
-  
+  ngOnChanges(changes: SimpleChanges): void {}
+
   showhideNewsandPolls() {
     if (this.showNewsandPolls == true) {
       this.showNewsandPolls = false;
@@ -89,8 +90,8 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-   // this.authenticationService.logout();
-   this._router.navigate(['/']);
+    this.auth.clearStorage();
+    this._router.navigate(['']);
   }
 }
 

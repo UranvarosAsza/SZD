@@ -29,6 +29,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { RegisterComponent } from './auth/components/register/register.component
     SidebarComponent,
     PagenotfoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,10 +64,9 @@ import { RegisterComponent } from './auth/components/register/register.component
     MatTableModule,
     MatGridListModule,
     MatDialogModule,
+    MatCheckboxModule,
   ],
-  providers: [
-    DatePipe,
-  ],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

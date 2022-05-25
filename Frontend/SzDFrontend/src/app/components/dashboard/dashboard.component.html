@@ -1,26 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light"><button mat-button class="nav-link" (click)="logout()">LogOut</button></nav>
 <div class="grid">
     <div class="main">
         <app-news class="news-component"></app-news>
         <app-poll></app-poll>
     </div>
-    <div class="sidebar"><app-sidebar></app-sidebar></div>
+    <div class="sidebar"><app-sidebar></app-sidebar><button mat-button class="nav-link" (click)="logout()">LogOut</button></div>
 </div>
-
-
-<!-- 
-<br>
-
-<button (click)="makeUser()"> Make user</button>
-<button mat-raised-button color="primary" (click)="showhideNewsandPolls()">Hírek és szavazások</button>
-<button mat-raised-button color="primary" (click)="showhideResMeetandFin()">Lakógyúések és pénzügyek</button>
-<div *ngIf="showNewsandPolls == true">
-    <app-news></app-news>
-    <app-poll></app-poll>
-</div>
-
-
-<div *ngIf="showResMeetandFinancial == true">
-    <app-resmeet></app-resmeet>
-    <app-financial></app-financial>
-</div> -->

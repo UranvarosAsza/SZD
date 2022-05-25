@@ -6,6 +6,9 @@
     margin: 8px;
 }
 
+mat-card-content, mat-card-actions {
+    margin: 0 16px;
+}
 
 .poll-grid {
     display: inline-flex;

@@ -4,6 +4,7 @@ import { ApiService } from './../../../services/api.service';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isUserLogin();
+    if (this._auth.getUserDetails() != null) {
+      this._router.navigate(['/dashboard']);
+    }
   }
 
   onSubmit(form: NgForm) {
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  isUserLogin() {
+/*   isUserLogin() {
     if (this._auth.getUserDetails() != null) {
       this.isLogin = true;
     }
@@ -49,5 +52,5 @@ export class LoginComponent implements OnInit {
   logout() {
     this._auth.clearStorage();
     this._router.navigate(['']);
-  }
+  } */
 }

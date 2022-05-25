@@ -6,6 +6,10 @@
     margin: 8px;
 }
 
+mat-card-content {
+    margin: 0 16px;
+}
+
 .news-grid {
     display: inline-flex;
 }
