@@ -11,6 +11,7 @@ CREATE TABLE `users` (
   `email` varchar (255),
   `password` varchar(255),
   `adress` varchar (255),
+  `house_id` int,
   `isHouseMaster` boolean,
   PRIMARY KEY (`user_id`)
 ) AUTO_INCREMENT = 1;
@@ -23,8 +24,8 @@ INSERT INTO
     `isHouseMaster`
   )
 VALUES
-  ("Adam", "1234", 'Adress2', '1'),
-  ("Eve", "2345", 'Adress2', '1'),
+  ("Samuel Ross", "1234", 'Adress2', '1'),
+  ("Jonas Cummings", "2345", 'Adress2', '1'),
   ("Lucifer", "3456", 'Adress1', '1'),
   ("God", "4567", 'Adress3', '0'),
   ("Maze", "5678", 'Adress3', '0');
