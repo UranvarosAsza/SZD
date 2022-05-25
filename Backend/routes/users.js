@@ -15,6 +15,14 @@ async function selectLoggedInUser(param) {
   return loggedInUser[0][0];
 };
 
+async function houseIdfromAdress(param){
+
+  
+  console.log(house_id[0][0].house_id);
+  console.log(typeof(house_id[0][0].house_id));
+  return house_id[0][0].house_id;
+}
+
 router.use((req, res, next) => {
   console.log("Request made to users route");
   next();
@@ -25,7 +33,6 @@ router.get('/all', async (req, res) => {
 
   const results = await db.promise().query(`SELECT * FROM USERS`);
   res.send(results[0]);
-  //res.send("users/all endpoint works");
 });
 
 router.get('/', async (req, res) => {
@@ -38,16 +45,27 @@ router.get('/', async (req, res) => {
 
 
 router.post('/register', async function (req, res, next) {
+ // let adress = req.body.adress || "" ;
+  // = houseIdfromAdress(adress);
+ // console.log(house_idfromdb);
   try {
-    let { username, email, password, isadmin } = req.body;
-
+    let { username, email, password,adress, isadmin } = req.body;
+    
+    let  house_idFromDB ;
     const hashed_password = md5(password.toString())
     const checkUsername = `Select username FROM users WHERE username = ?`;
     db.query(checkUsername, [username], (err, result, fields) => {
       if (!result.length) {
-        const sql = `Insert Into users (username, email, password, isHouseMaster) VALUES ( ?, ?, ?, ? )`
+        const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )`
+        
+        const sql_2 =`SELECT house_id FROM house WHERE adress = ?`
+        db.query(sql_2, [adress], (err, result, fields)=>{
+          house_idFromDB= result[0].house_id;
+          console.log(typeof(result[0].house_id));
+        });
+        
         db.query(
-          sql, [username, email, hashed_password, isadmin],
+          sql, [username, email, hashed_password,adress, house_idFromDB.toString()  , isadmin],
           (err, result, fields) => {
             if (err) {
               res.send({ status: 0, data: err });
@@ -80,8 +98,8 @@ router.post('/login', async function (req, res, next) {
           res.send({ status: 0, data: err });
         } else {
           let token = jwt.sign({ data: result }, 'secret')
-          //res.send(selectLoggedInUser(username))
-          res.send({ status: 1, data: result, token: token  });
+          
+          res.send({ status: 1, data: result, token: token, body:selectLoggedInUser(username) });
           console.log('user login complete');
                   
         }
