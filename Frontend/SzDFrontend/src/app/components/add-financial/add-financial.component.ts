@@ -5,7 +5,7 @@ import { FinTableService } from 'src/app/services/financial-table.service';
 @Component({
   selector: 'app-add-financial',
   templateUrl: './add-financial.component.html',
-  styleUrls: ['./add-financial.component.css']
+  styleUrls: ['./add-financial.component.scss']
 })
 export class AddFinancialComponent implements OnInit {
 

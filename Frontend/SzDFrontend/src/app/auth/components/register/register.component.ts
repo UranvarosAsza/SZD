@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       ...form.value,
       isadmin: form.value.isadmin || false,
     };
-
+    console.log(data)
     this._api.postTypeRequest('users/register', data).subscribe((res: any) => {
       if (res.status) {
         console.log(res);

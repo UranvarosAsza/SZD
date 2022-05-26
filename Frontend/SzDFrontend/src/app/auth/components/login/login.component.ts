@@ -3,9 +3,6 @@ import { NgForm } from '@angular/forms';
 import { ApiService } from './../../../services/api.service';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
-import {FormsModule} from '@angular/forms';
-import { AuthGuardService } from 'src/app/services/auth-guard.service';
-
 
 @Component({
   selector: 'app-login',
@@ -28,11 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('Your form data : ', form.value);
+  //  console.log('Your form data : ', form.value);
     this._api
       .postTypeRequest('users/login', form.value)
       .subscribe((res: any) => {
         if (res.status) {
+          //console.log(res)
           this._auth.setDataInLocalStorage(
             'userData',
             JSON.stringify(res.data)
@@ -42,15 +40,4 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-
-/*   isUserLogin() {
-    if (this._auth.getUserDetails() != null) {
-      this.isLogin = true;
-    }
-  }
-
-  logout() {
-    this._auth.clearStorage();
-    this._router.navigate(['']);
-  } */
 }

@@ -5,7 +5,7 @@ import { PollService } from 'src/app/services/poll.service';
 @Component({
   selector: 'app-add-poll',
   templateUrl: './add-poll.component.html',
-  styleUrls: ['./add-poll.component.css']
+  styleUrls: ['./add-poll.component.scss']
 })
 export class AddPollComponent implements OnInit {
 

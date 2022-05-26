@@ -5,7 +5,7 @@ import { ResMeetService } from 'src/app/services/residental-meet.service';
 @Component({
   selector: 'app-add-res-meet',
   templateUrl: './add-res-meet.component.html',
-  styleUrls: ['./add-res-meet.component.css'],
+  styleUrls: ['./add-res-meet.component.scss'],
 })
 export class AddResMeetComponent implements OnInit {
   title = '';

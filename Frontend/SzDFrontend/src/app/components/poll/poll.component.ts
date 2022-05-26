@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Poll } from 'src/app/models/poll.model';
 import { PollService } from 'src/app/services/poll.service';
 
@@ -8,6 +8,8 @@ import { PollService } from 'src/app/services/poll.service';
   styleUrls: ['./poll.component.css']
 })
 export class PollComponent implements OnInit {
+  @Input() houseId = '';
+  
   polls: any;
   poll!: Poll;
 

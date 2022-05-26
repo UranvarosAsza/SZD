@@ -1,4 +1,4 @@
-<h1>News</h1>
+<h1 *ngIf="!pinned">News</h1>
 <div *ngFor="let i of news" class="news-grid">
   <mat-card class="news-card">
     <mat-card-header>

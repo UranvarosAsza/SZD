@@ -1,0 +1,12 @@
+::ng-deep.mat-dialog-container {
+    height: 70vh;
+    width: 50vw;
+}
+
+::ng-deep.mat-form-field {
+    width: 40vw !important;
+
+    textarea {
+        height: 20vh;
+    }
+}

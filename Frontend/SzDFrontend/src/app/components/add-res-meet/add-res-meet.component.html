@@ -1,25 +1,28 @@
-<div>
-    <h2>Lakógyűlés tábla felvitele</h2>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Cím</mat-label>
-        <input matInput [(ngModel)]="title">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>Leírás</mat-label>
-        <textarea matInput [(ngModel)]="description"></textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>Pénzügyi táblá / táblák</mat-label>
-        <input matInput [(ngModel)]="financial_id">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>Ház azonosító</mat-label>
-        <input matInput [(ngModel)]="house_id">
-    </mat-form-field>
-    <br>
-    <button mat-raised-button mat-dialog-close color="primary" (click)="send()">Elküldés</button>
-</div>
+<h2 mat-dialog-title>Lakógyűlés tábla felvitele</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field appearance="outline">
+    <mat-label>Cím</mat-label>
+    <input matInput [(ngModel)]="title" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Leírás</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Pénzügyi táblá / táblák</mat-label>
+    <input matInput [(ngModel)]="financial_id" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Ház azonosító</mat-label>
+    <input matInput [(ngModel)]="house_id" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="send()">
+    Elküldés
+  </button>
+</mat-dialog-actions>

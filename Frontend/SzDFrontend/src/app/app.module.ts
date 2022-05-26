@@ -30,6 +30,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatGridListModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatDividerModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

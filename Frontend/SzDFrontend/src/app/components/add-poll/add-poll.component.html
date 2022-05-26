@@ -1,20 +1,24 @@
-<div>
-  <h2>Szavazás hozzáadása</h2>
+<h2 mat-dialog-title>Szavazás hozzáadása</h2>
+<mat-dialog-content class="mat-typography">
   <mat-form-field appearance="outline">
     <mat-label>Cím</mat-label>
-    <input matInput [(ngModel)]="title">
+    <input matInput [(ngModel)]="title" />
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Leírás</mat-label>
     <textarea matInput [(ngModel)]="description"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
-
     <mat-label>Cimke</mat-label>
     <mat-select [(ngModel)]="label">
       <mat-option value="Residental">Lakó</mat-option>
       <mat-option value="HMaster">Házmester</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button mat-dialog-close color="primary" (click)="send()">Elküldés</button>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button mat-dialog-close color="primary" (click)="send()">
+    Elküldés
+  </button>
+</mat-dialog-actions>
