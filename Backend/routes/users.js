@@ -51,24 +51,26 @@ router.post('/register', async function (req, res, next) {
   try {
     let { username, email, password,adress, isadmin } = req.body;
     
-    let  house_idFromDB ;
+    let  house_idFromDB ="";
     const hashed_password = md5(password.toString())
+    const sql_2 =`SELECT house_id FROM house WHERE adress = ?`
+    db.query(sql_2, [adress], (err, result, fields)=>{
+      house_idFromDB= result[0].house_id;
+    //  console.log(result);
+    //  console.log(result[0].house_id);
+    });
     const checkUsername = `Select username FROM users WHERE username = ?`;
     db.query(checkUsername, [username], (err, result, fields) => {
       if (!result.length) {
+
         const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )`
-        
-        const sql_2 =`SELECT house_id FROM house WHERE adress = ?`
-        db.query(sql_2, [adress], (err, result, fields)=>{
-          house_idFromDB= result[0].house_id;
-          console.log(typeof(result[0].house_id));
-        });
-        
+         
         db.query(
-          sql, [username, email, hashed_password,adress, house_idFromDB.toString()  , isadmin],
+          sql, [username, email, hashed_password,adress, house_idFromDB.toString() , isadmin],
           (err, result, fields) => {
             if (err) {
               res.send({ status: 0, data: err });
+              console.log(err)
             } else {
               let token = jwt.sign({ data: result }, 'secret')
               res.send({ status: 1, data: result, token: token });
