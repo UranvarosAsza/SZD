@@ -14,6 +14,12 @@ router.get('/all', async (req, res) => {
 
 });
 
+router.get('/resmeetOfHouse', async (req, res)=>{
+    const house_id = req.body.house_id;
+    const results = await db.promise().query(`SELECT * from residental_meeting WHERE house_id = '${house_id}'`);
+    res.send(results[0]);
+} );
+
 router.get('/', async (req, res) => {
     console.log("GET REQUEST");
     const resmeet_id = req.body.resmeet_id;
@@ -23,11 +29,11 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     console.log("POST REQUEST");
     const { title, description, financial_table_id, house_id } = req.body;
-    console.log("POST :", title, description, financial_table_id, house_id);
-    if (title && description && financial_table_id && house_id) {
+    console.log("POST :", title, description,  house_id);
+    if (title && description && house_id) {
         try {
             db.promise().query(`INSERT INTO residental_meeting(title, description, financial_table_id, house_id)
-                VALUES ( '${title}', '${description}', '${financial_table_id}', '${house_id}' )`);
+                VALUES ( '${title}', '${description}', '${house_id}' )`);
             res.status(201).send({ msg: 'Cretated Residental meeting' });
 
         } catch (err) {

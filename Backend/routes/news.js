@@ -15,6 +15,14 @@ router.get('/all', async (req, res) => {
     res.send(results[0]);
 });
 
+router.post('/newsOfHouse', async (req, res)=>{
+    const house_id = req.body.house_id;
+    //console.log("req.body" + req.body);
+    const results = await db.promise().query(`SELECT * from NEWS WHERE house_id = '${house_id}'`);
+    //console.log(results[0]);
+    res.send(results[0]);
+} );
+
 router.get('/', async (req, res) => {
     console.log("GET REQUEST");
     const news_id = req.body.news_id;
