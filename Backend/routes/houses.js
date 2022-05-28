@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
         }
     }
 });
+
 router.get('/adresses', async (req, res) => {
     console.log('all adresses request');
     const adresses = await db.promise().query(`SELECT distinct adress from house`);

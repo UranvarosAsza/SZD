@@ -14,9 +14,11 @@ router.get('/all', async (req, res) => {
 
 });
 
-router.get('/resmeetOfHouse', async (req, res)=>{
-    const house_id = req.body.house_id;
+router.get('/:house_id', async (req, res) => {
+    const house_id = req.params.house_id;
+    //console.log(req.params);
     const results = await db.promise().query(`SELECT * from residental_meeting WHERE house_id = '${house_id}'`);
+    //console.log(results[0]);
     res.send(results[0]);
 } );
 
