@@ -23,7 +23,6 @@ export class AddResMeetComponent implements OnInit {
       this.title,
       this.description,
       this.financial_id,
-      this.house_id
     );
     this.resMeetService.postResMeets(newResMeet).subscribe(
       (data) => {

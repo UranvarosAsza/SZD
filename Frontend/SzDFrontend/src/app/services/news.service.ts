@@ -31,6 +31,10 @@ export class NewsService {
     return this.http.get<any>(this.url + '/' + id, this.httpOptions);
   }
 
+  getNewsOfHouseId(house_id: string) {
+    return this.http.post<number>(this.url + '/newsOfHouse', house_id, this.httpOptions);
+  }
+
   postNews(news: News) {
     console.log(JSON.stringify(news));
     return this.http.post<News>(

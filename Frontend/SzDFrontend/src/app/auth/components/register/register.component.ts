@@ -47,8 +47,8 @@ export class RegisterComponent implements OnInit {
     this._api.postTypeRequest('users/register', data).subscribe((res: any) => {
       if (res.status) {
         console.log(res);
-        this._auth.setDataInLocalStorage('userData', JSON.stringify(res.data));
-        this._auth.setDataInLocalStorage('token', res.token);
+        //this._auth.setDataInLocalStorage('userData', JSON.stringify(res.data));
+        //this._auth.setDataInLocalStorage('token', res.token);
         this._router.navigate(['login']);
       } else {
         console.log(res);

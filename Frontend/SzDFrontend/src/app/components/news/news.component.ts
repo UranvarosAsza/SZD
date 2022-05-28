@@ -26,7 +26,8 @@ export class NewsComponent implements OnInit, OnChanges {
     ) {}
 
   ngOnInit(): void {
-    this.newsService.getNewsById(this.houseId).subscribe(
+    //console.log("house id : " + this.houseId);
+    this.newsService.getNewsOfHouseId(this.houseId).subscribe(
       (data: any) => {
         console.log(data);
         this.news = this.pinned ? data.filter(this.isPinned) : data;

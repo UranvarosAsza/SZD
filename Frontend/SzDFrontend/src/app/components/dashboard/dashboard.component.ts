@@ -12,7 +12,7 @@ import { HouseService } from '../../services/house.service';
 export class DashboardComponent implements OnInit, OnChanges {
   user: any;
   address = '';
-
+  house_id: any;
   constructor(
     public auth: AuthService,
     private router: Router,
@@ -21,7 +21,10 @@ export class DashboardComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.user = JSON.parse(this.auth.getUserDetails() as string)[0] as User;
-    /* this.houseService.getAddressById(this.user.house_id).subscribe(
+    this.house_id = this.user.house_id;
+
+    console.log(this.user);
+    /*this.houseService.getAddressById(this.user.house_id).subscribe(
       (data: any) => {
         this.address = data;
       },
@@ -29,7 +32,7 @@ export class DashboardComponent implements OnInit, OnChanges {
         console.log('error ', error);
       }
     ); 
-    this.address = 'Address2'; ///delete */ ///WHAT?
+    this.address = 'Address2'; ///delete  ///WHAT?*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {}

@@ -1,7 +1,7 @@
 <nav class="nav"><p class="navbar">Hello {{user.username}} | {{user.adress}}</p><button mat-button class="navbar" (click)="logout()">LogOut</button></nav>
 <div class="grid">
     <div class="main">
-        <app-news class="news-component" [houseId]="user.houseId"></app-news>
+        <app-news class="news-component" [houseId]="user.house_id"></app-news>
         <mat-divider></mat-divider>
         <app-poll></app-poll>
     </div>
