@@ -32,7 +32,7 @@ export class NewsService {
   }
 
   getNewsOfHouseId(house_id: string) {
-    return this.http.post<number>(this.url + '/newsOfHouse', house_id, this.httpOptions);
+    return this.http.get<number>(this.url + '/' + house_id, this.httpOptions);
   }
 
   postNews(news: News) {

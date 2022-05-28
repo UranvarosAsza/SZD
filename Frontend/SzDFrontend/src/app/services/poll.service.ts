@@ -35,6 +35,10 @@ export class PollService {
     return this.http.get<any>(this.url + '/' + id, this.httpOptions);
   }
 
+  getPollsOfHouseId(house_id: string) {
+    return this.http.get<number>(this.url + '/' + house_id, this.httpOptions);
+  }
+
   postPolls(poll: Poll) {
     console.log(JSON.stringify(poll));
     return this.http.post<Poll>(

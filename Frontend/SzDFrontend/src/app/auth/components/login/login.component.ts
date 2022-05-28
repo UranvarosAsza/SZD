@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     this._api
       .postTypeRequest('users/login', form.value)
       .subscribe((res: any) => {
-        if (res.status) {
-          //console.log(res)
+        if (res.status === 200) {
+          console.log(res.status)
           this._auth.setDataInLocalStorage(
             'userData',
             JSON.stringify(res.data)

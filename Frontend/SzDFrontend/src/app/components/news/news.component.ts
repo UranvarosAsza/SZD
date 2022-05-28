@@ -26,7 +26,7 @@ export class NewsComponent implements OnInit, OnChanges {
     ) {}
 
   ngOnInit(): void {
-    //console.log("house id : " + this.houseId);
+  //  console.log("house id : " + this.houseId);
     this.newsService.getNewsOfHouseId(this.houseId).subscribe(
       (data: any) => {
         console.log(data);
@@ -39,7 +39,7 @@ export class NewsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.newsService.getNews().subscribe(
+    this.newsService.getNewsOfHouseId(this.houseId).subscribe(
       (data: any) => {
         console.log(data);
         this.news = this.pinned ? data.filter(this.isPinned) : data;

@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   isLogin: boolean = false;
   errorMessage: any;
   houses: any;
+  isMaster: boolean = false;
 
   constructor(
     private _api: ApiService,
@@ -36,6 +37,8 @@ export class RegisterComponent implements OnInit {
         console.log('error: ', error);
       }
     );
+
+    
   }
 
   onSubmit(form: NgForm) {

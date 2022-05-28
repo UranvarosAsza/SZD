@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { News } from 'src/app/models/news.model';
 import { NewsService } from 'src/app/services/news.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-news',
@@ -13,12 +14,17 @@ export class AddNewsComponent implements OnInit {
   label = '';
   house_id = 1;
   showAddNews = false;
-  constructor(private newsService: NewsService) {}
+
+  constructor(
+    private newsService: NewsService,
+    private auth: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
   send() {
-    const newnews = new News(this.title, this.description, this.label);
+    const newnews = new News(this.title, this.description, this.label, this.auth.getHouseId());
+    console.log(newnews)
     this.newsService.postNews(newnews).subscribe(
       (data) => {
         console.log(data);

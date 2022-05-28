@@ -3,8 +3,8 @@
     <div class="main">
         <app-news class="news-component" [houseId]="user.house_id"></app-news>
         <mat-divider></mat-divider>
-        <app-poll></app-poll>
+        <app-poll [houseId]="user.house_id"></app-poll>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
-    <div class="sidebar"><app-sidebar></app-sidebar></div>
+    <div class="sidebar"><app-sidebar [houseId]="user.house_id"></app-sidebar></div>
 </div>

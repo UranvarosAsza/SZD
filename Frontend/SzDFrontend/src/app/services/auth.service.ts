@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  user: any;
   constructor() {}
+
+  getHouseId() {
+    return (JSON.parse(localStorage.getItem('userData') as string)[0] as User).house_id;
+  }
 
   getUserDetails() {
     if (localStorage.getItem('userData')) {

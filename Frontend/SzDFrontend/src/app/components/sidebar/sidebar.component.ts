@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AddResMeetComponent } from '../add-res-meet/add-res-meet.component';
@@ -12,6 +12,8 @@ import { AddFinancialComponent } from '../add-financial/add-financial.component'
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+  @Input() houseId = '';
+  
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}

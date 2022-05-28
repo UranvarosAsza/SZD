@@ -30,6 +30,10 @@ export class FinTableService {
     return this.http.get<any>(this.url + '/all', this.httpOptions);
   }
 
+  getFinOfHouseId(house_id: string) {
+    return this.http.get<number>(this.url + '/' + house_id, this.httpOptions);
+  }
+
   getTablesById(id: string) {
     return this.http.get<any>(this.url + '/' + id, this.httpOptions);
   }

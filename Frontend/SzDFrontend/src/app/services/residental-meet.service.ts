@@ -33,6 +33,10 @@ export class ResMeetService {
         return this.http.get<any>(this.url +"/all", this.httpOptions);
     }
 
+    getResOfHouseId(house_id: string) {
+        return this.http.get<number>(this.url + '/' + house_id, this.httpOptions);
+    }
+
     postResMeets(resMeet : ResidentalMeet){
         console.log(JSON.stringify(resMeet));
         return this.http.post<ResidentalMeet>(this.url, JSON.stringify(resMeet), this.httpOptions);
