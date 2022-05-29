@@ -17,13 +17,24 @@ export class PollComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.pollService.getPolls().subscribe(
+    this.pollService.getPollsOfHouseId(this.houseId).subscribe(
+      (data: any)=> {
+          console.log("data" + data); 
+          this.polls = data;      
+      },
+      (error)=>{
+        console.log("error: " + error);
+      }
+
+    );
+
+    /*this.pollService.getPolls().subscribe(
       (data) => {
         console.log(data);
         this.polls = data;
       }, error => {
         console.log('error: ', error)
-      });
+      });*/
   }
   vote(poll: Poll): void{
     let data = {...poll, votes: ++poll.votes };
