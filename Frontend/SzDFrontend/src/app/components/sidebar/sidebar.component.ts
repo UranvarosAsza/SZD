@@ -13,6 +13,7 @@ import { AddFinancialComponent } from '../add-financial/add-financial.component'
 })
 export class SidebarComponent implements OnInit {
   @Input() houseId = '';
+  @Input() isHousemaster :any;
   
   constructor(public dialog: MatDialog) {}
 
