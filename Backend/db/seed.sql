@@ -1,7 +1,6 @@
 /*--Initial seeder for the db*/
 /*CREATE SCHEMA `HouseAppDB2`;*/
 /*USE `houseappdb`;*/
-
 /* users */
 DROP TABLE IF EXISTS `users`;
 
@@ -291,7 +290,7 @@ VALUES
     'Residental',
     '2'
   ),
-   (
+  (
     "Pakolás",
     "Kedves lakótársak, a lomtalaítás miatt segítséget kérnék a pincém kipakolására. Aki tudna segíteni a pincéknél megtalál holnap reggel.",
     'Residental',
@@ -302,7 +301,7 @@ VALUES
     "Kedves lakők előreláthatólag 2 hétig felújítást végzünk a 2. emelet 4-ben, az okozott kellemetlenségek miatt elnézést kerünk: Kovácsék.",
     'Residental',
     '3'
-  ), 
+  ),
   (
     "Lorem ipsum",
     "Kedves lakótársak, dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -362,16 +361,64 @@ INSERT INTO
     `house_id`
   )
 VALUES
-  ("Title1", "Desc: Bla bla bla bla ", 'HMaster', 1),
   (
-    "Title2",
-    "Desc: Bla bla bla bla ",
-    'Residental',
-    1
+    "Kukák",
+    "A lakóháznak lenne-e szüksége új szemetesektre?",
+    'HMaster',
+      '1'
   ),
   (
-    "Title3",
-    "Desc: Bla bla bla bla ",
+    "Festés",
+    "Kedves lakók segítene, valaki festeni pénteken? -Kovácsék",
     'Residental',
-    2
-  );
+    '1'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Residental',
+    '2'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'HMaster',
+    '2'
+  ),
+(
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Residental',
+    '3'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Hmaster',
+    '3'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Residental',
+    '4'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Hmaster',
+    '4'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Residental',
+    '5'
+  ),
+  (
+    "Lorem ipsum",
+    "dolor sit amet, consectetur adipiscing elit, sed ",
+    'Hmaster',
+    '5'
+  )
+;
