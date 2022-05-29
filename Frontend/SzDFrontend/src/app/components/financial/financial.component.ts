@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import { FinTableService } from 'src/app/services/financial-table.service';
 
 @Component({
   selector: 'app-financial',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./financial.component.css']
 })
 export class FinancialComponent implements OnInit {
+  @Input() houseId = '';
+  financial: any;
 
-  constructor() { }
+  constructor(private financialService: FinTableService) { }
 
   ngOnInit(): void {
+    this.financialService.getFinOfHouseId(this.houseId).subscribe(
+      (data)=>{
+        this.financial = data;
+      }, error =>{
+        console.log("error: " + error);
+      }
+    )
   }
 
 }

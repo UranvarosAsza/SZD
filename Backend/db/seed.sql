@@ -21,7 +21,8 @@ INSERT INTO
     `email`,
     `password`,
     `adress`,
-    `isHouseMaster`
+    `isHouseMaster`,
+    `house_id`
   )
 VALUES
   (
@@ -29,6 +30,7 @@ VALUES
     "risus.donec@aol.net",
     "1234",
     'Adress2',
+    '1',
     '1'
   ),
   (
@@ -36,28 +38,32 @@ VALUES
     "diam.eu@outlook.couk",
     "2345",
     'Adress2',
-    '1'
+    '1',
+    '2'
   ),
   (
     "Jack Gibson",
     "duis.cursus.diam@protonmail.net",
     "3456",
     'Adress1',
-    '1'
+    '1',
+    '3'
   ),
   (
     "Tate Slater",
     "tincidunt.vehicula@protonmail.com",
     "4567",
     'Adress3',
-    '0'
+    '0',
+    '4'
   ),
   (
     "Anthony Sandoval",
     "feugiat.metus@icloud.net",
     "5678",
     'Adress3',
-    '0'
+    '0',
+    '5'
   );
 
 /*--house*/
@@ -157,7 +163,7 @@ INSERT INTO
   )
 VALUES
   (
-    "Kémeény tisztítás",
+    "Kémény tisztítás",
     "A kéményseprők kiszállási díjja + munka ",
     '5000',
     '4500',

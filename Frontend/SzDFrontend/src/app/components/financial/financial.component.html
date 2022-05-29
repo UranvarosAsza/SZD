@@ -1,1 +1,22 @@
-<p>financial works!</p>
+<h1>Financial records</h1>
+<div *ngFor="let i of financial">
+    <mat-card class="resmeet-card" >
+      <mat-card-header>
+        <mat-card-title>{{i.title}} <Title></Title></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{i.description}}
+        </p>
+        <p>
+          {{i.plan}}
+        </p>
+        <p>
+          {{i.fact}}
+        </p>
+        <p>
+          {{i.nextplan}}
+        </p>
+    </mat-card-content>
+  </mat-card>
+</div>

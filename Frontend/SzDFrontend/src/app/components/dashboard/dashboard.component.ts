@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit, OnChanges {
   user: any;
   address = '';
   house_id: any;
+  firstpage = true;
+  pagename = "Residental meets and Financial"
   constructor(
     public auth: AuthService,
     private router: Router,
@@ -40,5 +42,16 @@ export class DashboardComponent implements OnInit, OnChanges {
   logout() {
     this.auth.clearStorage();
     this.router.navigate(['']);
+  }
+
+  setpage(){
+    if(this.firstpage == true){
+      this.firstpage = false;
+      this.pagename= "News and Polls"
+    }else{
+      this.firstpage=true;
+      this.pagename= "Residental meets and Financial"
+    }
+
   }
 }

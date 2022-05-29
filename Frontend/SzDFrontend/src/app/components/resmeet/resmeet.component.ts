@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { ResMeetService } from '../../services/residental-meet.service';
 
 @Component({
@@ -7,18 +7,19 @@ import { ResMeetService } from '../../services/residental-meet.service';
   styleUrls: ['./resmeet.component.css']
 })
 export class ResmeetComponent implements OnInit {
+  @Input() houseId = '';
   resmeet: any;
-
+  
   constructor(private resMeetService : ResMeetService) { }
 
   ngOnInit(): void {
-    this.resMeetService.getResMeets().subscribe(
+    this.resMeetService.getResOfHouseId(this.houseId).subscribe(
 
       (data) => {
         console.log(data);
         this.resmeet = data;
       }, error => {
-        console.log('error: ', error)
+        console.log('error: ', error);
       });
     
   }
