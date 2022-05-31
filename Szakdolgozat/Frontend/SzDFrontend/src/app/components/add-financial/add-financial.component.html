@@ -14,19 +14,22 @@
     <mat-label>Terv</mat-label>
     <input matInput [(ngModel)]="plan" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  
+    <mat-form-field appearance="outline" class="small">
     <mat-label>Tény</mat-label>
-    <input matInput [(ngModel)]="fact" />
+    <input matInput [(ngModel)]="fact"/>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="small">
     <mat-label>Következő terv</mat-label>
-    <input matInput [(ngModel)]="nextPlan" />
+    <input matInput [(ngModel)]="nextPlan"/>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="small">
     <mat-label>Ház azonosító</mat-label>
     <input matInput [(ngModel)]="house_id" />
   </mat-form-field>
+  
 </mat-dialog-content>
+<br>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-raised-button mat-dialog-close color="primary" (click)="send()">

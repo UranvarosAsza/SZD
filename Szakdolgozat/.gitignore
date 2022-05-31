@@ -1,0 +1,5 @@
+Backend/node_modules/
+Frontend/SzDFrontend/.vscode/
+Backend/.env
+TODO.txt
+Backend/database.js

@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/register', async function (req, res, next) {
+/* router.post('/register', async function (req, res, next) {
   const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )` 
 
   try {
@@ -56,31 +56,38 @@ router.post('/register', async function (req, res, next) {
     let userid = 0;
     const hashed_password = md5(password.toString());
    
-    db.query(`SELECT house_id FROM house WHERE adress = ?`, [adress], (err, result, fields) => {
-      //console.log(result[0])
-      if (result[0] == undefined) {
-        house_idFromDB = "-1";
-        return;
-      } else {
+    try {
+      await db.promise().query(`SELECT house_id FROM house WHERE adress = ?`, [adress], (err, result, fields) => {
+        console.log(result[0])
+        /* if (result[0] == undefined) {
+          house_idFromDB = "-1";
+          return;
+        } else {
+          house_idFromDB = result[0].house_id;
+        } 
         house_idFromDB = result[0].house_id;
-      }
-    });
+      });
+    } catch (error) {
+      return next(error);
+    }
+    
 
-    if (house_idFromDB = "-1") {
+    /* if (house_idFromDB = "-1") {
       db.query(`Select MAX(user_id) as user_id FROM users`, (err, result, fields)=> {
         userid = result[0].user_id += 1;
       //  console.log(userid);
-      });
+      }); */
 
-      db.query(`INSERT INTO house (adress, HM_id) VALUES ( ?, ?)`, [adress, userid], (err, result, fields)=> {});
+     /*  db.query(`INSERT INTO house (adress, HM_id) VALUES ( ?, ?)`, [adress, userid], (err, result, fields)=> {});
 
       db.query(`SELECT house_id FROM house WHERE adress = ?`, [adress], (err, result, fields) => {
-        house_idFromDB = result[0]?.house_id;
+        console.log(result[0]?.house_id)
+        house_idFromDB = result[0]?.house_id.toString();
       });
-
+      console.log('sup' + house_idFromDB) 
     }
 
-    db.query(sql, [username, email, hashed_password, adress, house_idFromDB.toString() , isadmin], (err, result, fields) => {
+    db.query(sql, [username, email, hashed_password, adress, house_idFromDB.toString(), isadmin], (err, result, fields) => {
         if (err) {
           res.send({ status: 0, data: err });
           console.log(err)
@@ -115,6 +122,50 @@ router.post('/register', async function (req, res, next) {
     res.send({ status: 0, error: error });
   }
 });
+ */
+
+router.post('/register', async function (req, res, next) {
+  // let adress = req.body.adress || "" ;
+   // = houseIdfromAdress(adress);
+  // console.log(house_idfromdb);
+   try {
+     let { username, email, password,adress, isadmin } = req.body;
+     
+     let  house_idFromDB ="";
+     const hashed_password = md5(password.toString())
+     const sql_2 =`SELECT house_id FROM house WHERE adress = ?`
+     db.query(sql_2, [adress], (err, result, fields)=>{
+       house_idFromDB= result[0].house_id;
+     //  console.log(result);
+     //  console.log(result[0].house_id);
+     });
+     const checkUsername = `Select username FROM users WHERE username = ?`;
+     db.query(checkUsername, [username], (err, result, fields) => {
+       if (!result.length) {
+ 
+         const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )`
+          
+         db.query(
+           sql, [username, email, hashed_password,adress, house_idFromDB.toString() , isadmin],
+           (err, result, fields) => {
+             if (err) {
+               res.send({ status: 0, data: err });
+               console.log(err)
+             } else {
+               let token = jwt.sign({ data: result }, 'secret')
+               res.send({ status: 1, data: result, token: token });
+               console.log('user registration complete');
+             }
+ 
+           })
+       }
+     });
+ 
+ 
+   } catch (error) {
+     res.send({ status: 0, error: error });
+   }
+ });
 
 router.post('/login', async function (req, res, next) {
   try {

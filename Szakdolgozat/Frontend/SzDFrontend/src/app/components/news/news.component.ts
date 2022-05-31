@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
 })
-export class NewsComponent implements OnInit, OnChanges {
+export class NewsComponent implements OnInit {
   @Input() pinned = false;
   @Input() houseId = '';
   
@@ -30,19 +30,7 @@ export class NewsComponent implements OnInit, OnChanges {
     this.newsService.getNewsOfHouseId(this.houseId).subscribe(
       (data: any) => {
         console.log(data);
-        this.news = this.pinned ? data.filter(this.isPinned) : data;
-      },
-      (error) => {
-        console.log('error: ', error);
-      }
-    );
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.newsService.getNewsOfHouseId(this.houseId).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.news = this.pinned ? data.filter(this.isPinned) : data;
+        this.news = this.pinned ? data.filter(this.isPinned) : data.filter(this.isNotPinned);
       },
       (error) => {
         console.log('error: ', error);
@@ -53,4 +41,9 @@ export class NewsComponent implements OnInit, OnChanges {
   isPinned(news: News) {
     return news.label === 'Pinned';
   }
+
+  isNotPinned(news: News) {
+    return news.label !== 'Pinned';
+  }
 }
+ 
