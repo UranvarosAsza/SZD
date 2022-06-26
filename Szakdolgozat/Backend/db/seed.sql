@@ -158,8 +158,7 @@ INSERT INTO
     `plan`,
     `fact`,
     `nextplan`,
-    `house_id`,
-    `res_meet_id`
+    `house_id`
   )
 VALUES
   (
@@ -168,7 +167,6 @@ VALUES
     '5000',
     '4500',
     '0',
-    '1',
     '1'
   ),
   (
@@ -177,8 +175,7 @@ VALUES
     '10000',
     '12500',
     '8500',
-    '2',
-    '1'
+    '2'
   ),
   (
     "Title3",
@@ -186,8 +183,7 @@ VALUES
     '52000',
     '43500',
     '3500',
-    '3',
-    '1'
+    '3'
   ),
   (
     "Title4",
@@ -195,8 +191,7 @@ VALUES
     '22000',
     '12500',
     '22500',
-    '5',
-    '1'
+    '5'
   );
 
 /*-news */
@@ -280,7 +275,7 @@ VALUES
   ),
   (
     "Muskátli",
-    "Kedves lakótársak, a minap kisség sok palántát vettem melyek nem férnek el az erkélyemen. 4 palánta muskátli elvihető az 1. emelet 2-ből.",
+    "Kedves lakótársak, a minap kissé sok palántát vettem melyek nem férnek el az erkélyemen. 4 palánta muskátli elvihető az 1. emelet 2-ből.",
     'Residental',
     '1'
   ),

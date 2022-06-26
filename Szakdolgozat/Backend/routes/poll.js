@@ -9,7 +9,6 @@ router.use((req, res, next) => {
 
 router.get('/all', async (req, res) => {
     console.log("poll.all request got, and replyed with all the polls");
-
     const results = await db.promise().query(`SELECT * FROM poll`);
     res.send(results[0]);
 });
@@ -65,7 +64,6 @@ router.delete('/', async (req, res) => {
     var poll_id = req.body.financial_id;
     const delted_poll = await db.promise().query(`SELECT title FROM poll WHERE poll_id = '${poll_id}' `);
     var results = await db.promise().query(`DELETE FROM poll WHERE poll_id = '${poll_id}' `);
-
     var deletedP = delted_poll[0][0].title + ' deleted';
     res.send({ msg: deletedP });
 });

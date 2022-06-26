@@ -12,7 +12,6 @@ router.get('/all', async (req, res) => {
 
     const results = await db.promise().query(`SELECT * FROM house`);
     res.send(results[0]);
-
 });
 
 
@@ -51,12 +50,8 @@ router.delete('/', async (req, res) => {
     var house_id = req.body.house_id;
     const deleted_house = await db.promise().query(`SELECT adress FROM house WHERE house_id = '${house_id}' `);
     var results = await db.promise().query(`DELETE FROM HOUSE WHERE house_id = '${house_id}' `);
-    //  console.log(deleted_house.adress, "deleted")
-    // res.send({ msg:  'House deleted' });
-
     var deletedH = deleted_house[0][0].adress + ' deleted';
     res.send({ msg: deletedH });
 });
-
 
 module.exports = router;

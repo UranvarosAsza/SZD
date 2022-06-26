@@ -9,17 +9,15 @@ const { check, validationResults } = require('express-validator');
 
 async function selectLoggedInUser(param) {
 
-    const loggedInUser = await db.promise().query(`SELECT user_id, username, isHouseMaster, adress FROM users WHERE username = '${param}'`);
+  const loggedInUser = await db.promise().query(
+    `SELECT user_id, username, isHouseMaster, adress FROM users WHERE username = '${param}'`);
 
- // console.log(loggedInUser[0][0]);
   return loggedInUser[0][0];
 };
 
-async function houseIdfromAdress(param){
-
-  
+async function houseIdfromAdress(param) {
   console.log(house_id[0][0].house_id);
-  console.log(typeof(house_id[0][0].house_id));
+  console.log(typeof (house_id[0][0].house_id));
   return house_id[0][0].house_id;
 }
 
@@ -30,7 +28,6 @@ router.use((req, res, next) => {
 
 router.get('/all', async (req, res) => {
   console.log("users.all request got, and replyed with all the users");
-
   const results = await db.promise().query(`SELECT * FROM USERS`);
   res.send(results[0]);
 });
@@ -43,66 +40,24 @@ router.get('/', async (req, res) => {
   res.send(results[0]).status(201);
 });
 
-
-/* router.post('/register', async function (req, res, next) {
-  const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )` 
-
+router.post('/register', async function (req, res, next) {
   try {
     let { username, email, password, adress, isadmin } = req.body;
 
-   // console.log(req.body)
-    
-    let  house_idFromDB = "";
-    let userid = 0;
-    const hashed_password = md5(password.toString());
-   
-    try {
-      await db.promise().query(`SELECT house_id FROM house WHERE adress = ?`, [adress], (err, result, fields) => {
-        console.log(result[0])
-        /* if (result[0] == undefined) {
-          house_idFromDB = "-1";
-          return;
-        } else {
-          house_idFromDB = result[0].house_id;
-        } 
-        house_idFromDB = result[0].house_id;
-      });
-    } catch (error) {
-      return next(error);
-    }
-    
-
-    /* if (house_idFromDB = "-1") {
-      db.query(`Select MAX(user_id) as user_id FROM users`, (err, result, fields)=> {
-        userid = result[0].user_id += 1;
-      //  console.log(userid);
-      }); */
-
-     /*  db.query(`INSERT INTO house (adress, HM_id) VALUES ( ?, ?)`, [adress, userid], (err, result, fields)=> {});
-
-      db.query(`SELECT house_id FROM house WHERE adress = ?`, [adress], (err, result, fields) => {
-        console.log(result[0]?.house_id)
-        house_idFromDB = result[0]?.house_id.toString();
-      });
-      console.log('sup' + house_idFromDB) 
-    }
-
-    db.query(sql, [username, email, hashed_password, adress, house_idFromDB.toString(), isadmin], (err, result, fields) => {
-        if (err) {
-          res.send({ status: 0, data: err });
-          console.log(err)
-        } else {
-          let token = jwt.sign({ data: result }, 'secret')
-          res.send({ status: 1, data: result, token: token });
-          console.log('user registration complete');
-        }
+    let house_idFromDB = "";
+    const hashed_password = md5(password.toString())
+    const sql_2 = `SELECT house_id FROM house WHERE adress = ?`
+    db.query(sql_2, [adress], (err, result, fields) => {
+      house_idFromDB = result[0].house_id;
     });
-
     const checkUsername = `Select username FROM users WHERE username = ?`;
     db.query(checkUsername, [username], (err, result, fields) => {
-      if (!result.length) {  
+      if (!result.length) {
+
+        const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )`
+
         db.query(
-          sql, [username, email, hashed_password,adress, house_idFromDB.toString() , isadmin],
+          sql, [username, email, hashed_password, adress, house_idFromDB.toString(), isadmin],
           (err, result, fields) => {
             if (err) {
               res.send({ status: 0, data: err });
@@ -113,59 +68,14 @@ router.get('/', async (req, res) => {
               console.log('user registration complete');
             }
 
-        });
+          })
       }
     });
-
 
   } catch (error) {
     res.send({ status: 0, error: error });
   }
 });
- */
-
-router.post('/register', async function (req, res, next) {
-  // let adress = req.body.adress || "" ;
-   // = houseIdfromAdress(adress);
-  // console.log(house_idfromdb);
-   try {
-     let { username, email, password,adress, isadmin } = req.body;
-     
-     let  house_idFromDB ="";
-     const hashed_password = md5(password.toString())
-     const sql_2 =`SELECT house_id FROM house WHERE adress = ?`
-     db.query(sql_2, [adress], (err, result, fields)=>{
-       house_idFromDB= result[0].house_id;
-     //  console.log(result);
-     //  console.log(result[0].house_id);
-     });
-     const checkUsername = `Select username FROM users WHERE username = ?`;
-     db.query(checkUsername, [username], (err, result, fields) => {
-       if (!result.length) {
- 
-         const sql = `Insert Into users (username, email, password, adress, house_id, isHouseMaster) VALUES ( ?, ?, ?, ?, ?, ? )`
-          
-         db.query(
-           sql, [username, email, hashed_password,adress, house_idFromDB.toString() , isadmin],
-           (err, result, fields) => {
-             if (err) {
-               res.send({ status: 0, data: err });
-               console.log(err)
-             } else {
-               let token = jwt.sign({ data: result }, 'secret')
-               res.send({ status: 1, data: result, token: token });
-               console.log('user registration complete');
-             }
- 
-           })
-       }
-     });
- 
- 
-   } catch (error) {
-     res.send({ status: 0, error: error });
-   }
- });
 
 router.post('/login', async function (req, res, next) {
   try {
@@ -181,7 +91,7 @@ router.post('/login', async function (req, res, next) {
         } else {
           let token = jwt.sign({ data: result }, 'secret')
           res.send({ status: 200, data: result, token: token, body: selectLoggedInUser(username) });
-          console.log('user login complete');       
+          console.log('user login complete');
         }
       })
   } catch (error) {
@@ -189,42 +99,12 @@ router.post('/login', async function (req, res, next) {
   }
 });
 
-
-
-
-/*
-router.post('/register', [
-    check('username').notEmpty().withMessage("username id canot be empty")
-        .isLength({ min: 1 }).withMessage("username have to be at least 1 character long "),
-    check('password').notEmpty().withMessage("password canot be empty"),
-],
-    (req, res) => {
-        const { username, password } = req.body;
-        console.log("POST :", username, password);
-        if (username && password) {
-            try {
-                db.promise().query(`INSERT INTO USERS(username, password) VALUES ('${username}','${password}' )`);
-
-                res.status(201).send({ msg: 'Cretated user' });
-
-            } catch (err) {
-                console.log(err);
-            }
-        }
-    });
-*/
-
 router.delete('/', async (req, res) => {
-
   var user_id = req.body.user_id;
-
-
   const deleted_username = await db.promise().query(`SELECT username FROM USERS WHERE user_id = '${user_id}' `);
   var results = await db.promise().query(`DELETE FROM USERS WHERE user_id = '${user_id}' `);
-
   var deletedUN = deleted_username[0][0].username + ' deleted';
   res.send({ msg: deletedUN });
 });
-
 
 module.exports = router;

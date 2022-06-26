@@ -32,5 +32,4 @@ connection.query(seedQuery, err =>{
     }
 })
 
-//console.log("MySQL db Seeding ended.");
 connection.end();

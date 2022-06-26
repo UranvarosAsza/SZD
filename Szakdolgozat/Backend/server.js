@@ -1,5 +1,4 @@
 const express = require('express');
-
 const usersRoute = require('./routes/users');
 const housesRoute = require('./routes/houses');
 const newsRoute = require('./routes/news');
@@ -8,16 +7,6 @@ const financialRoute = require('./routes/financial')
 const pollRoute = require('./routes/poll');
 const app = express();
 const cors = require('cors');
-
-//auth0:
-/**
- * const {auth} = require('express-openid-connect');
-//user-profile
-const { requiresAuth } = require('express-openid-connect');
-
- * 
- * 
- */
 
 const config = {
     authRequired: false,
@@ -45,20 +34,7 @@ app.use('/residental_meeting', resMeetRoute);
 app.use('/financial', financialRoute );
 app.use('/poll', pollRoute);
 
-
-
-/**
- * app.get('/', (req, res) => {
-    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
-});
- * 
- * 
- * app.get('/profile', requiresAuth(), (req, res) => {
-    res.send(JSON.stringify(req.oidc.user));
-});
-*/
 app.get('/', (req, res)=>{
     console.log("get req from client");
-
     res.send("Server works at port 4000");
 })

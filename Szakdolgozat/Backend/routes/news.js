@@ -32,14 +32,14 @@ router.get('/', async (req, res) => {
 
 router.post('/', (req, res) => {
 
-    const { title, description, label } = req.body;
+    const { title, description, label, house_id} = req.body;
 
-    console.log("POST REQUEST");
-    console.log(title, description, label);
-    if (title && description && label) {
+    //console.log("POST REQUEST");
+    console.log(title, description, label, house_id);
+    if (title && description && label && house_id) {
         try {
-            db.promise().query(`INSERT INTO news(title,description,label)
-             VALUES('${title}','${description}','${label}')`);
+            db.promise().query(`INSERT INTO news(title,description,label, house_id)
+             VALUES('${title}','${description}','${label}' , '${house_id}')`);
             res.status(201).send({ msg: 'Cretated news' });
         } catch (err) {
             console.log(err);
@@ -49,13 +49,13 @@ router.post('/', (req, res) => {
 
 
 router.put('/', async (req, res) => {
-    console.log("PUT / UPDATE REQUEST");
+    //console.log("PUT / UPDATE REQUEST");
     res.status(201).send({ msg: 'OK' });
 });
 
 router.delete('/', async (req, res, next) => {
 
-    console.log("Delete request to news id: ");
+    //console.log("Delete request to news id: ");
     var news_id = req.body.news_id;
     check('news_id').isNumeric.withMessage("News id must be a number")
         .notEmpty().withMessage("News id canot be empty")
@@ -66,7 +66,5 @@ router.delete('/', async (req, res, next) => {
     console.log(deleted_news.title, "deleted")
     res.send({ msg: 'News deleted' });
 });
-
-
 
 module.exports = router;

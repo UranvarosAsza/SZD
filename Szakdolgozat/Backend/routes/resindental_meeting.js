@@ -59,6 +59,4 @@ router.delete('/', async (req, res) => {
     res.send({ msg: deletedRM });
 });
 
-
-
 module.exports = router;
