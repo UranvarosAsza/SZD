@@ -30,11 +30,11 @@ router.get('/', async (req, res) => {
 });
 router.post('/', async (req, res) => {
     console.log("POST REQUEST");
-    const { title, description, financial_table_id, house_id } = req.body;
+    const { title, description, house_id } = req.body;
     console.log("POST :", title, description,  house_id);
     if (title && description && house_id) {
         try {
-            db.promise().query(`INSERT INTO residental_meeting(title, description, financial_table_id, house_id)
+            db.promise().query(`INSERT INTO residental_meeting(title, description, house_id)
                 VALUES ( '${title}', '${description}', '${house_id}' )`);
             res.status(201).send({ msg: 'Cretated Residental meeting' });
 
